@@ -1,0 +1,9 @@
+@use 'utils/variables' as *;
+@use 'base';
+
+body {
+  /* Box model */
+  height: 100vh;
+
+  background-color: $Bg;
+}
