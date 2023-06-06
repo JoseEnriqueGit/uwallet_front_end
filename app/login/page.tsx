@@ -1,11 +1,13 @@
+// Styles
+import Styles from "./Login.module.scss";
 // Components
-import { Input } from '../Components'
-import Link from 'next/link'
+import { Input } from "../Components";
+import Link from "next/link";
 
 const Login = () => {
-  return (
-    <article className="ContainerLoginSingUp">
-			<span className="Logo">UWALLET</span>
+	return (
+		<article className={Styles.ContainerLoginSingUp}>
+			<span className={Styles.LogoTipo}>UWALLET</span>
 			<Input
 				label="Email:"
 				type="email"
@@ -26,16 +28,16 @@ const Login = () => {
 				// defaultValue={formData.correo}
 				// onChange={e => setFormData({ ...formData, correo: e.target.value })}
 			/>
-			<button className="BtnLogin">Login</button>
-			<button className="BtnLoginWithGoogle">Login with Google</button>
-			<Link className="Link" href="forgot-password/">
+			<button className={Styles.BtnLogin}>Login</button>
+			<button className={Styles.BtnLoginWithGoogle}>Login with Google</button>
+			<Link className={Styles.Link} href="/forgot-password">
 				Forgot password?
 			</Link>
-			<Link className="Link" href="/sing-up">
+			<Link className={Styles.Link} href="/sing-up">
 				Create a account
 			</Link>
 		</article>
-  )
-}
+	);
+};
 
-export default Login
+export default Login;
