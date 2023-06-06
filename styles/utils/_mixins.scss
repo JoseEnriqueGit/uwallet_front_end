@@ -64,12 +64,7 @@
 	}
 }
 
-@mixin ButtonHover(
-	$Backg,
-	$alpha: 0.8,
-	$hasLetters: false,
-	$fontColor: $Bg
-) {
+@mixin ButtonHover($Backg, $alpha: 0.8, $hasLetters: false, $fontColor: $Bg) {
 	// Visual
 	background-color: rgba($color: $Backg, $alpha: $alpha);
 	// Visual effects
