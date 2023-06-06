@@ -25,33 +25,28 @@
 		@include Button($Backg: $Bg, $H: 36px, $hasLetters: true, $fontColor: $Sec);
 	}
 	.BtnLogin:hover {
-		@include ButtonHover($Backg: $Sec, $alpha: 1, $hasLetters: true, $fontColor: $Bg);
+		@include ButtonHover(
+			$Backg: $Sec,
+			$alpha: 1,
+			$hasLetters: true,
+			$fontColor: $Bg
+		);
 	}
 	.BtnLoginWithGoogle {
-    @include Button($Backg: $Green, $H: 36px, $hasLetters: true, $fontColor: $Bg);
+		@include Button(
+			$Backg: $Green,
+			$H: 36px,
+			$hasLetters: true,
+			$fontColor: $Bg
+		);
 	}
 	.BtnLoginWithGoogle:hover {
-		@include ButtonHover($Backg: $Sec, $alpha: 1, $hasLetters: true, $fontColor: $Bg);
-	}
-	// Sing up Btn Styles
-	.BtnSingUp {
-		@include Button($Backg: $Bg, $H: 36px, $hasLetters: true, $fontColor: $Sec);
-	}
-	.BtnSingUp:hover {
-		@include ButtonHover($Backg: $Sec, $alpha: 1, $hasLetters: true, $fontColor: $Bg);
-		// Loader
-		div::before {
-			background-color: $Pri !important;
-		}
-		div::after {
-			background-color: $Pri !important;
-		}
-	}
-	.BtnSingUpWithGoogle {
-		@include Button($Backg: $Green, $H: 36px, $hasLetters: true, $fontColor: $Bg);
-	}
-	.BtnSingUpWithGoogle:hover {
-		@include ButtonHover($Backg: $Sec, $alpha: 1, $hasLetters: true, $fontColor: $Bg);
+		@include ButtonHover(
+			$Backg: $Sec,
+			$alpha: 1,
+			$hasLetters: true,
+			$fontColor: $Bg
+		);
 	}
 
 	.Link {
