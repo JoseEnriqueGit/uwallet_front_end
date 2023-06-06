@@ -1,0 +1,110 @@
+@use "./variables" as *;
+
+@mixin LogoTipo($Fs: large, $Fc: $Sec) {
+	// Composition
+	display: flex;
+	align-items: center;
+	// Typography
+	font-size: $Fs;
+	font-weight: $SemiBold;
+	color: $Fc;
+}
+
+@mixin textArea {
+	// Box-model
+	height: 100px;
+	padding: 5px 8px;
+	max-width: 350px;
+	max-height: 300px;
+	resize: none;
+	// Visual
+	border: solid 2px rgba($color: $Ter, $alpha: 0);
+	border-radius: $SubContainerBorderRadius;
+	outline: none;
+	background-color: $Wh;
+	// Typography
+	color: $Bg;
+	font-size: medium;
+	font-weight: $Medium;
+	// Visual effects
+	transition: all 0.2s;
+}
+
+@mixin textAreaFocus() {
+	// Visual
+	border: solid 2px rgba($color: $Ter, $alpha: 1);
+	// Visual effects
+	transition: all 0.2s;
+}
+
+@mixin Button($Backg, $W: 100%, $H: 3rem, $hasLetters: false, $fontColor: $Bg) {
+	// Composition
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	// Box-model
+	width: $W;
+	height: $H;
+	// Visual
+	background-color: $Backg;
+
+	// color: var.$Fc;
+	border-style: none;
+	border-radius: $SubContainerBorderRadius;
+	// Visual effects
+	transition: all 0.2s;
+
+	@if $hasLetters {
+		// Typography
+		color: $fontColor;
+		font-weight: $Medium;
+	} @else {
+		@error "Unknown type of button #{$type}.";
+	}
+}
+
+@mixin ButtonHover(
+	$Backg,
+	$alpha: 0.8,
+	$hasLetters: false,
+	$fontColor: $Bg
+) {
+	// Visual
+	background-color: rgba($color: $Backg, $alpha: $alpha);
+	// Visual effects
+	transition: all 0.2s;
+
+	@if $hasLetters {
+		// Typography
+		color: $fontColor;
+	} @else {
+		@error "Unknown type of button #{$type}.";
+	}
+}
+
+@mixin Link($Bg, $W: 100%, $H: 3rem) {
+	// Composition
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	// Box-model
+	width: $W;
+	height: $H;
+	// Visual
+	background-color: $Bg;
+	// color: var.$Fc;
+	border-style: none;
+	border-radius: $SubContainerBorderRadius;
+	// Visual effects
+	transition: all 0.2s;
+	cursor: default;
+}
+
+@mixin LinkHover($Bg, $alpha: 0.8) {
+	// Visual
+	background-color: rgba($color: $Bg, $alpha: $alpha);
+	// Visual effects
+	transition: all 0.2s;
+}
