@@ -33,7 +33,7 @@ const Login = () => {
 			<Link className={Styles.Link} href="/forgot-password">
 				Forgot password?
 			</Link>
-			<Link className={Styles.Link} href="/sing-up">
+			<Link className={Styles.Link} href="/signup">
 				Create a account
 			</Link>
 		</article>
