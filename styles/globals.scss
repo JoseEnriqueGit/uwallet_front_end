@@ -1,9 +1,20 @@
-@use 'utils/variables' as *;
-@use 'base';
+@use "utils/variables" as *;
+@use "base";
 
 body {
-  /* Box model */
-  height: 100vh;
+	/* Box model */
+	height: 100vh;
 
-  background-color: $Bg;
+	background-color: $Bg;
+
+	main {
+		// Box-model
+		width: 100%;
+		height: 100%;
+		//Composition
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
 }
