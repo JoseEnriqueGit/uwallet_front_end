@@ -1,6 +1,13 @@
 @use "utils/variables" as *;
 @use "base";
 
+*{
+  // Typography
+  font-family: 'Itim', cursive;
+  font-family: 'Rubik', sans-serif;
+  color: $Sec;
+}
+
 body {
 	/* Box model */
 	height: 100vh;
