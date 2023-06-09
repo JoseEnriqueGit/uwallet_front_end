@@ -11,32 +11,32 @@
 	background-color: $Pri;
 	border-radius: $ContainerBorderRadius;
 
-	.headerTitle{
+	.headerTitle {
 		// Typography
 		color: $Sec;
 	}
-	.headerSubtitle{
+	.headerSubtitle {
 		// Typography
 		color: $Ter;
 	}
-	button.socialButtons{
+	button.socialButtons {
 		@include Button($Backg: $Bg, $H: 36px, $hasLetters: true, $fontColor: $Sec);
 	}
 
 	// Divider
-	.dividerText{
+	.dividerText {
 		color: $Sec;
 	}
-	.dividerLine{
+	.dividerLine {
 		background-color: $Sec;
 	}
 
-	.formFieldLabel{
+	.formFieldLabel {
 		// Typography
 		color: $Sec;
 	}
 
-	p{
+	p {
 		// Typography
 		color: $Sec;
 	}
@@ -67,5 +67,3 @@
 	// Typography
 	color: $Ter;
 }
-
-
