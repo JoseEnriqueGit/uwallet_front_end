@@ -1,0 +1,71 @@
+@use "utils/variables" as *;
+@use "utils/mixins" as *;
+
+.ContainerLoginSingUp {
+	// Box-model
+	width: 500px;
+	padding: $PaddingsLoginSignUp;
+	box-shadow: none;
+
+	// Visual
+	background-color: $Pri;
+	border-radius: $ContainerBorderRadius;
+
+	.headerTitle{
+		// Typography
+		color: $Sec;
+	}
+	.headerSubtitle{
+		// Typography
+		color: $Ter;
+	}
+	button.socialButtons{
+		@include Button($Backg: $Bg, $H: 36px, $hasLetters: true, $fontColor: $Sec);
+	}
+
+	// Divider
+	.dividerText{
+		color: $Sec;
+	}
+	.dividerLine{
+		background-color: $Sec;
+	}
+
+	.formFieldLabel{
+		// Typography
+		color: $Sec;
+	}
+
+	p{
+		// Typography
+		color: $Sec;
+	}
+
+	.formButtonPrimary {
+		@include Button($Backg: $Ter, $H: 36px, $hasLetters: true, $fontColor: $Bg);
+	}
+	.formButtonPrimary:hover {
+		@include ButtonHover(
+			$Backg: $Sec,
+			$alpha: 1,
+			$hasLetters: true,
+			$fontColor: $Bg
+		);
+	}
+}
+
+// Footer
+.footerActionText {
+	// Typography
+	color: $Sec;
+}
+.footerActionLink {
+	// Typography
+	color: $Ter;
+}
+.footerActionLink:hover {
+	// Typography
+	color: $Ter;
+}
+
+
