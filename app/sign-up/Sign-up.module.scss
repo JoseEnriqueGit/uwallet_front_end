@@ -55,15 +55,24 @@
 }
 
 // Footer
-.footerActionText {
-	// Typography
-	color: $Sec;
-}
-.footerActionLink {
-	// Typography
-	color: $Ter;
-}
-.footerActionLink:hover {
-	// Typography
-	color: $Ter;
+.footer{
+	// Box-model
+	display: flex;
+	justify-content: center;
+	
+	
+	.footerActionText {
+		// Typography
+		color: $Sec;
+		font-size: medium;
+	}
+	.footerActionLink {
+		// Typography
+		color: $Ter;
+		font-size: medium;
+	}
+	.footerActionLink:hover {
+		// Typography
+		color: $Ter;
+	}
 }

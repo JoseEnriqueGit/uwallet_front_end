@@ -25,6 +25,7 @@ export default function Page() {
 						socialButtonsBlockButton: Styles.socialButtons,
 						formButtonPrimary: Styles.formButtonPrimary,
 						// Footer
+						footer: Styles.footer,
 						footerActionText: Styles.footerActionText,
 						footerActionLink: Styles.footerActionLink,
 					},
