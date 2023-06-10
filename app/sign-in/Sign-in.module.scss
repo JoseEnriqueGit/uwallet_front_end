@@ -1,0 +1,33 @@
+@use "utils/variables" as *;
+@use "utils/mixins" as *;
+
+.cardContainer {
+	@include cardContainer();
+
+	.header {
+		@include headerContainer();
+	}
+
+	// Social Buttons
+	button.socialButtons {
+		@include Button($Backg: $Bg, $H: 36px, $hasLetters: true, $fontColor: $Sec);
+	}
+
+	@include Divider();
+
+	@include FieldText();
+
+	.formButtonPrimary {
+		@include Button($Backg: $Ter, $H: 36px, $hasLetters: true, $fontColor: $Bg);
+	}
+	.formButtonPrimary:hover {
+		@include ButtonHover(
+			$Backg: $Sec,
+			$alpha: 1,
+			$hasLetters: true,
+			$fontColor: $Bg
+		);
+	}
+}
+
+@include footerContainer();
