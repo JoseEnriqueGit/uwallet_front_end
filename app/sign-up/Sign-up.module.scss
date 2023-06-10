@@ -1,45 +1,21 @@
 @use "utils/variables" as *;
 @use "utils/mixins" as *;
 
-.ContainerLoginSingUp {
-	// Box-model
-	width: 500px;
-	padding: $PaddingsLoginSignUp;
-	box-shadow: none;
+.cardContainer {
+	@include cardContainer();
 
-	// Visual
-	background-color: $Pri;
-	border-radius: $ContainerBorderRadius;
+	.header {
+		@include headerContainer();
+	}
 
-	.headerTitle {
-		// Typography
-		color: $Sec;
-	}
-	.headerSubtitle {
-		// Typography
-		color: $Ter;
-	}
+	// Social Buttons
 	button.socialButtons {
 		@include Button($Backg: $Bg, $H: 36px, $hasLetters: true, $fontColor: $Sec);
 	}
 
-	// Divider
-	.dividerText {
-		color: $Sec;
-	}
-	.dividerLine {
-		background-color: $Sec;
-	}
+	@include Divider();
 
-	.formFieldLabel {
-		// Typography
-		color: $Sec;
-	}
-
-	p {
-		// Typography
-		color: $Sec;
-	}
+	@include FieldText();
 
 	.formButtonPrimary {
 		@include Button($Backg: $Ter, $H: 36px, $hasLetters: true, $fontColor: $Bg);
@@ -52,27 +28,12 @@
 			$fontColor: $Bg
 		);
 	}
+
+	.formFieldInputShowPasswordIcon {
+		path {
+			fill: rgba($color: $Pri, $alpha: 0.6);
+		}
+	}
 }
 
-// Footer
-.footer{
-	// Box-model
-	display: flex;
-	justify-content: center;
-	
-	
-	.footerActionText {
-		// Typography
-		color: $Sec;
-		font-size: medium;
-	}
-	.footerActionLink {
-		// Typography
-		color: $Ter;
-		font-size: medium;
-	}
-	.footerActionLink:hover {
-		// Typography
-		color: $Ter;
-	}
-}
+@include footerContainer();

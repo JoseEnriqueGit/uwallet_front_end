@@ -8,14 +8,20 @@ export default function Page() {
 			<SignUp
 				appearance={{
 					elements: {
+						// Container
+						card: Styles.cardContainer,
+						
 						// Header
-						card: Styles.ContainerLoginSingUp,
+						header: Styles.header,
 						headerTitle: Styles.headerTitle,
 						headerSubtitle: Styles.headerSubtitle,
 
 						// Form
 						formFieldLabel: Styles.formFieldLabel,
+						formFieldInputShowPasswordIcon: Styles.formFieldInputShowPasswordIcon,
+						// Form Text
 						formFieldSuccessText: Styles.formFieldSuccessText,
+						formFieldErrorText: Styles.formFieldErrorText,
 
 						// Divider
 						dividerText: Styles.dividerText,
