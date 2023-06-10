@@ -1,0 +1,75 @@
+@use "../variables" as *;
+
+@mixin cardContainer() {
+	// Box-model
+	width: 500px;
+	padding: $PaddingsLoginSignUp;
+	box-shadow: none;
+
+	// Visual
+	background-color: $Pri;
+	border-radius: $ContainerBorderRadius;
+}
+
+@mixin headerContainer() {
+	.headerTitle {
+		// Typography
+		color: $Sec;
+	}
+	.headerSubtitle {
+		// Typography
+		color: $Ter;
+	}
+}
+
+@mixin Divider() {
+	.dividerText {
+		color: $Sec;
+	}
+	.dividerLine {
+		background-color: $Sec;
+	}
+}
+
+@mixin FieldText() {
+	.formFieldLabel {
+		// Typography
+		color: $Sec;
+	}
+
+	p {
+		// Typography
+		color: $Sec;
+	}
+	.formFieldErrorText {
+		// Typography
+		color: $Red !important;
+	}
+	.formFieldSuccessText {
+		// Typography
+		color: $Green !important;
+	}
+}
+
+@mixin footerContainer() {
+	.footer {
+		// Box-model
+		display: flex;
+		justify-content: center;
+
+		.footerActionText {
+			// Typography
+			color: $Sec;
+			font-size: medium;
+		}
+		.footerActionLink {
+			// Typography
+			color: $Ter;
+			font-size: medium;
+		}
+		.footerActionLink:hover {
+			// Typography
+			color: $Ter;
+		}
+	}
+}

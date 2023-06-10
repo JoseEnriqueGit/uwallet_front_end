@@ -1,4 +1,4 @@
-@use "./variables" as *;
+@use "../variables" as *;
 
 @mixin LogoTipo($Fs: large, $Fc: $Sec) {
 	// Composition
@@ -59,6 +59,7 @@
 		// Typography
 		color: $fontColor;
 		font-weight: $Medium;
+		font-size: small;
 	} @else {
 		@error "Unknown type of button #{$type}.";
 	}
