@@ -2,6 +2,13 @@
 import "../styles/globals.scss";
 import { Inter } from "next/font/google";
 
+import {
+	ClerkProvider,
+	SignedIn,
+	SignedOut,
+	RedirectToSignUp,
+} from "@clerk/nextjs";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -15,10 +22,25 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="en">
-			<body className={inter.className}>
-				<main>{children}</main>
-			</body>
-		</html>
+		<ClerkProvider>
+			<html lang="en">
+				<body className={inter.className}>
+					<main>{children}</main>
+				</body>
+			</html>
+		</ClerkProvider>
+
+		// <ClerkProvider>
+		//   <html lang="en">
+		//     <body className={inter.className}>
+		//       <main>
+		//         <SignedIn>{children}</SignedIn>
+		//         <SignedOut>
+		//           <SingUpForm />
+		//         </SignedOut>
+		//       </main>
+		//     </body>
+		//   </html>
+		// </ClerkProvider>
 	);
 }
