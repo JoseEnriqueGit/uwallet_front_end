@@ -3,10 +3,12 @@ import Styles from "./Sign-in.module.scss";
 // Components
 import { SignIn } from "@clerk/nextjs";
 
-
 const Login = () => {
 	return (
 		<SignIn
+			redirectUrl="/overview"
+			signUpUrl="/sign-up"
+			path="/sign-in"
 			appearance={{
 				elements: {
 					// Container

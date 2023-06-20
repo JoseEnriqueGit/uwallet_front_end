@@ -6,11 +6,14 @@ export default function Page() {
 	return (
 		<>
 			<SignUp
+				redirectUrl="/overview"
+				signInUrl="/sign-in"
+				path="/sign-up"
 				appearance={{
 					elements: {
 						// Container
 						card: Styles.cardContainer,
-						
+
 						// Header
 						header: Styles.header,
 						headerTitle: Styles.headerTitle,
@@ -18,7 +21,8 @@ export default function Page() {
 
 						// Form
 						formFieldLabel: Styles.formFieldLabel,
-						formFieldInputShowPasswordIcon: Styles.formFieldInputShowPasswordIcon,
+						formFieldInputShowPasswordIcon:
+							Styles.formFieldInputShowPasswordIcon,
 						// Form Text
 						formFieldSuccessText: Styles.formFieldSuccessText,
 						formFieldErrorText: Styles.formFieldErrorText,
