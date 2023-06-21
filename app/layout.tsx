@@ -2,12 +2,7 @@
 import "../styles/globals.scss";
 import { Inter } from "next/font/google";
 
-import {
-	ClerkProvider,
-	SignedIn,
-	SignedOut,
-	RedirectToSignUp,
-} from "@clerk/nextjs";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,18 +24,5 @@ export default function RootLayout({
 				</body>
 			</html>
 		</ClerkProvider>
-
-		// <ClerkProvider>
-		//   <html lang="en">
-		//     <body className={inter.className}>
-		//       <main>
-		//         <SignedIn>{children}</SignedIn>
-		//         <SignedOut>
-		//           <SingUpForm />
-		//         </SignedOut>
-		//       </main>
-		//     </body>
-		//   </html>
-		// </ClerkProvider>
 	);
 }
