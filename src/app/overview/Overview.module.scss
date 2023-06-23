@@ -1,0 +1,141 @@
+// Utils
+@use "utils/variables" as *;
+@use "utils/mixins" as *;
+
+.ArticContainer {
+	// Box-model
+	max-width: 400px;
+	width: 100%;
+	gap: 10px;
+	// Composition
+	display: flex;
+	flex-direction: column;
+	// Visual
+	// background-color: $Pri;
+	// border-radius: 10px;
+
+	.OverviewHead {
+		// Box-model
+		padding: $PaddingsConteiner;
+		gap: 8px;
+		// Composition
+		display: flex;
+		flex-direction: column;
+		// Visual
+		background-color: $Pri;
+		border-radius: $ContainerBorderRadius;
+
+		.BalanceSpan {
+			// Visual
+			color: $Sec;
+			// Typography
+			font-size: large;
+			font-weight: $SemiBold;
+		}
+		.TotalOutput {
+			// Box-model
+			gap: 10px;
+			// Composition
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+
+			span {
+				// Composition
+				display: flex;
+				align-self: flex-end;
+				// Typography
+				font-size: larger;
+				font-weight: $SemiBold;
+				color: $Green;
+			}
+		}
+	}
+	.UpdateWalletContainer {
+		// Box-model
+		padding: $PaddingsConteiner;
+		gap: 15px;
+		// Composition
+		display: flex;
+		flex-direction: column;
+		// Visual
+		background-color: $Pri;
+		border-radius: $ContainerBorderRadius;
+
+		.UpdateWalletHead {
+			// Composition
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-content: center;
+			// Box-model
+			gap: 10px;
+
+			div {
+				// Composition
+				display: flex;
+				align-self: center;
+				// Box-model
+				gap: 8px;
+
+				span {
+					// @include TitleContainer();
+				}
+			}
+
+			.LinkUpdateWallet {
+				// @include Link($Bg: $Bg, $W: 32px, $H: 32px);
+			}
+			.LinkUpdateWallet:hover {
+				// @include LinkHover($Bg: $DarkHover, $alpha: 1);
+			}
+		}
+
+		label {
+			// @include label();
+
+			input {
+				// @include Input();
+			}
+			input:focus {
+				// @include inputFocus();
+			}
+		}
+
+		.ButtonContainer {
+			// Composition
+			display: flex;
+			flex-direction: row;
+			align-content: center;
+			// Box-model
+			gap: 30px;
+
+			.ButtonMinus {
+				// @include BtnIcon($Bg: $RedF);
+			}
+			.ButtonMinus:hover {
+				// @include BtnIconHover($Bg: $RedF);
+			}
+			.ButtonPlus {
+				// @include BtnIcon($Bg: $Ter);
+			}
+			.ButtonPlus:hover {
+				// @include BtnIconHover($Bg: $Ter);
+			}
+		}
+	}
+
+	// .ContainerChart{
+	//     // Box-model
+	//     height: 160px;
+
+	//     text{
+	//         // Typography
+	//         font-family: 'Rubik', sans-serif !important;
+	//         fill: $Sec !important;
+	//         font-weight: bold !important;
+	//         text-transform: uppercase !important;
+	//         font-size: small !important;
+	//     }
+	// }
+}
