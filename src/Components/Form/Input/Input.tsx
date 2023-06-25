@@ -2,10 +2,10 @@ import Styles from "./Input.module.scss";
 
 interface IInputProps {
 	type: string;
-	id: string;
-	autoComplete: string;
+	id?: string;
+	autoComplete?: string;
 	disabled?: boolean;
-	focus: boolean;
+	focus?: boolean;
 	defaultValue?: string;
 	onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 	min?: number;
