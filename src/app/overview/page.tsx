@@ -1,14 +1,37 @@
+"use client";
 // Styles
+import { use, useState } from "react";
 import Styles from "./Overview.module.scss";
-
+// Components
+import {
+	Coins,
+	NewFile,
+	SquareRoundedPlus,
+	Plus,
+	Minus,
+	Input,
+} from "@/src/Components";
 
 const page = () => {
+	const [inputValue, setInputValue] = useState("");
+
+	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		const newValue = event.target.value.replace(/[^0-9]/g, "");
+		if (newValue.length <= 10) {
+			setInputValue(newValue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+		}
+	};
+
+	const handleButtonClick = () => {
+		console.log(inputValue);
+	};
+
 	return (
 		<article className={Styles.ArticContainer}>
 			<div className={Styles.OverviewHead}>
 				<span className={Styles.BalanceSpan}>Balance total</span>
 				<div className={Styles.TotalOutput}>
-					{/* <Coin fill='#D9D9D9' width={26} height={26} /> */}
+					<Coins strokeWidth={2.5} />
 					<span>1800 Pesos</span>
 				</div>
 			</div>
@@ -16,40 +39,25 @@ const page = () => {
 			<div className={Styles.UpdateWalletContainer}>
 				<div className={Styles.UpdateWalletHead}>
 					<div>
-						{/* <NewFile fill='#D9D9D9' width={24} height={24} /> */}
+						<NewFile strokeWidth={2.5} />
 						<span>UPDATE WALLET</span>
 					</div>
-					{/* <Link to='/UpdateWallet' className='LinkUpdateWallet'>
-          <Dots fill='#D9D9D9' width={30} height={30} />
-        </Link> */}
+					<SquareRoundedPlus strokeWidth={2.5} />
 				</div>
-				<label>
-					MONEY:
-					{/* <InputMask
-          id='moneyUpdate'
-          name='userCedula'
-          autoComplete='off'
-          mask='999999999999999999999'
-          maskChar=''
-          autoFocus={false}
-          // defaultValue={formData.cedula}
-          // onChange={e => {
-          //     setHasCitation(false);
-          //     setUrlApi(e.target.value.replaceAll('-', ''));
-          //     setFormData({
-          //         ...formData,
-          //         cedula: e.target.value,
-          //     });
-          // }}
-        ></InputMask> */}
-				</label>
+				<Input
+					label="MONEY:"
+					type="text"
+					onChange={handleChange}
+					value={inputValue}
+				/>
+
 				<div className={Styles.ButtonContainer}>
-					{/* <Button className='ButtonMinus'>
-          <Minus fill='#222531' width={32} height={32} />
-        </Button>
-        <Button className='ButtonPlus'>
-          <Plus fill='#222531' width={32} height={32} />
-        </Button> */}
+					<button className={Styles.ButtonMinus}>
+						<Minus width={30} height={30} stroke={"#222531"} />
+					</button>
+					<button className={Styles.ButtonPlus}>
+						<Plus width={30} height={30} stroke={"#222531"} />
+					</button>
 				</div>
 			</div>
 

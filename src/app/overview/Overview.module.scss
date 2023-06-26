@@ -79,7 +79,7 @@
 				gap: 8px;
 
 				span {
-					// @include TitleContainer();
+					@include TitleContainer();
 				}
 			}
 
@@ -111,16 +111,26 @@
 			gap: 30px;
 
 			.ButtonMinus {
-				// @include BtnIcon($Bg: $RedF);
+				@include Button($Backg: $RedF, $hasLetters: true, $fontColor: $Bg);
 			}
 			.ButtonMinus:hover {
-				// @include BtnIconHover($Bg: $RedF);
+				@include ButtonHover(
+					$Backg: $RedF,
+					$alpha: 0.8,
+					$hasLetters: true,
+					$fontColor: $Bg
+				);
 			}
 			.ButtonPlus {
-				// @include BtnIcon($Bg: $Ter);
+				@include Button($Backg: $Ter, $hasLetters: true, $fontColor: $Bg);
 			}
 			.ButtonPlus:hover {
-				// @include BtnIconHover($Bg: $Ter);
+				@include ButtonHover(
+					$Backg: $Ter,
+					$alpha: 0.8,
+					$hasLetters: true,
+					$fontColor: $Bg
+				);
 			}
 		}
 	}
