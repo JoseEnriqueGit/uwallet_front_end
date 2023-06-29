@@ -1,13 +1,23 @@
 @use "../variables" as *;
 
-@mixin LogoTipo($Fs: large, $Fc: $Sec) {
+@mixin LogoTipo($FontSize: large, $FontColor: $Sec) {
 	// Composition
 	display: flex;
 	align-items: center;
 	// Typography
-	font-size: $Fs;
+	font-size: $FontSize;
 	font-weight: $SemiBold;
-	color: $Fc;
+	color: $FontColor;
+}
+
+@mixin TitleContainer($FontSize: large, $FontColor: $Sec) {
+	// Composition
+	display: flex;
+	align-items: center;
+	// Typography
+	font-size: $FontSize;
+	font-weight: $SemiBold;
+	color: $FontColor;
 }
 
 @mixin textArea {
