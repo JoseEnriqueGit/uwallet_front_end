@@ -1,5 +1,5 @@
 // Styles
-import "../styles/globals.scss";
+import "../../styles/globals.scss";
 import { Inter } from "next/font/google";
 
 import { ClerkProvider } from "@clerk/nextjs";
