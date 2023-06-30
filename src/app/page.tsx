@@ -1,43 +1,14 @@
 // Css
 import Styles from "./page.module.scss";
 // Components
-import { SignIn } from "@clerk/nextjs";
+import { currentUser } from "@clerk/nextjs";
+import { redirect } from "next/navigation";
 
-export default function Home() {
-	return (
-		<SignIn
-			redirectUrl="/overview"
-			signUpUrl="/sign-up"
-			path="/sign-in"
-			appearance={{
-				elements: {
-					// Container
-					card: Styles.cardContainer,
+const Home = async () => {
+	const isLogged = await currentUser();
 
-					// Header
-					header: Styles.header,
-					headerTitle: Styles.headerTitle,
-					headerSubtitle: Styles.headerSubtitle,
+	isLogged ? redirect("/overview") : redirect("/sign-in");
+	redirect("/overview");
+};
 
-					// Form
-					formFieldLabel: Styles.formFieldLabel,
-					formFieldSuccessText: Styles.formFieldSuccessText,
-					// Form Text
-					formFieldErrorText: Styles.formFieldErrorText,
-
-					// Divider
-					dividerText: Styles.dividerText,
-					dividerLine: Styles.dividerLine,
-
-					// Buttons
-					socialButtonsBlockButton: Styles.socialButtons,
-					formButtonPrimary: Styles.formButtonPrimary,
-					// Footer
-					footer: Styles.footer,
-					footerActionText: Styles.footerActionText,
-					footerActionLink: Styles.footerActionLink,
-				},
-			}}
-		/>
-	);
-}
+export default Home;
