@@ -3,6 +3,11 @@
 @use "utils/mixins" as *;
 
 .ArticContainer {
+	@media (width <= 768px) {
+		// Box-model
+		max-width: 500px;
+	}
+
 	// Box-model
 	max-width: 400px;
 	width: 100%;
