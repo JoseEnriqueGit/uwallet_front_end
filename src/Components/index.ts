@@ -1,3 +1,4 @@
+export { default as BalanceSection } from './BalanceSection/BalanceSection';
 export { default as Input } from './Form/Input/Input';
 export { default as NumberInput } from './Form/NumberInput/NumberInput';
 export { default as Coins } from './Icons/Coins';
