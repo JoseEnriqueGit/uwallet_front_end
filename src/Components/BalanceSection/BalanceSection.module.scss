@@ -1,0 +1,75 @@
+// Utils
+@use "utils/variables" as *;
+@use "utils/mixins" as *;
+
+.BalanceContainer {
+	/* Box-model */
+	padding: $PaddingsConteiner;
+	gap: 8px;
+	/* Composition */
+	display: flex;
+	flex-direction: column;
+	/* Visual */
+	background-color: $Pri;
+	border-radius: $ContainerBorderRadius;
+
+	.BalanceSpan {
+		/* Visual */
+		color: $Sec;
+		/* Typography */
+		font-size: large;
+		font-weight: $SemiBold;
+	}
+
+	.TotalOutput {
+		/* Box-model */
+		gap: 10px;
+		/* Composition */
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+
+		span {
+			/* Composition */
+			display: flex;
+			align-self: flex-end;
+			/* Typography */
+			font-size: larger;
+			font-weight: $SemiBold;
+			color: $Green;
+
+			/* Skeleton loading styles */
+			&.loadingContainer {
+				display: inline-block;
+				width: 100px; /* Ajusta el ancho según sea necesario */
+				height: 20px; /* Ajusta la altura según sea necesario */
+				position: relative;
+				overflow: hidden;
+				background-color: $Pri;
+				border-radius: 4px;
+				animation: loading 1.5s infinite linear;
+			}
+
+			&.loadingContainer::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 200px;
+				height: 100%;
+				background: linear-gradient(90deg, $Pri, $Bg, $Pri);
+				background-size: 200px 100%;
+				animation: loading 1.5s infinite linear;
+			}
+		}
+	}
+}
+
+@keyframes loading {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
