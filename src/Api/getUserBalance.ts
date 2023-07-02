@@ -1,7 +1,7 @@
 import { useQuery } from "react-query";
 import axios from "axios";
 
-export const fetchBalance = async (userId: string) => {
+const fetchBalance = async (userId: string) => {
   const response = await axios.get(`https://apiuwallet.onrender.com/users/balance/${userId}`);
   return response.data;
 };
