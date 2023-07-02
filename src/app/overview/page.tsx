@@ -14,7 +14,7 @@ import {
 const page = () => {
 	return (
 		<article className={Styles.ArticContainer}>
-			<BalanceSection balance={1800} userId="user_prueba" />
+			<BalanceSection />
 
 			<div className={Styles.UpdateWalletContainer}>
 				<div className={Styles.UpdateWalletHead}>
