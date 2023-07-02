@@ -7,3 +7,4 @@ export { default as NewFile } from './Icons/NewFile';
 export { default as Plus } from './Icons/Plus';
 export { default as SquareRoundedPlus } from './Icons/SquareRoundedPlus';
 export * from './Icons/Types/IconPropsTypes';
+export { default as UpdateWallet } from './UpdateWallet/UpdateWallet';
