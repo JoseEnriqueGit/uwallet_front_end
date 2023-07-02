@@ -11,12 +11,13 @@ import {
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useAuth } from "@clerk/nextjs";
-import { useQueryClient } from 'react-query';
+import { useQueryClient } from "react-query";
 
 const UpdateWallet = () => {
 	const { userId } = useAuth();
 	const [amount, setAmount] = useState(undefined);
 	const [isAmountFalse, setIsAmountFalse] = useState(false);
+	const [hasInsufficientFunds, setHasInsufficientFunds] = useState(false);
 	const queryClient = useQueryClient();
 
 	const handleInputChange = (event: any) => {
@@ -38,11 +39,19 @@ const UpdateWallet = () => {
 						expenses_type: "UNDEFINED",
 					}
 				);
-				queryClient.invalidateQueries(['balance', userId]);
+				queryClient.invalidateQueries(["balance", userId]);
 				setAmount(undefined);
 			}
-		} catch (error) {
-			console.error(error);
+		} catch (error: any) {
+			if (
+				error.response &&
+				error.response.status === 400 &&
+				error.response.data.error === "Insufficient funds"
+			) {
+				setHasInsufficientFunds(true);
+			} else {
+				console.error(error);
+			}
 		}
 	};
 
@@ -74,6 +83,9 @@ const UpdateWallet = () => {
 			/>
 			{isAmountFalse ? (
 				<span className={Styles.Warning}>Please enter a value</span>
+			) : null}
+			{hasInsufficientFunds ? (
+				<span className={Styles.Warning}>Insufficient funds</span>
 			) : null}
 
 			<div className={Styles.ButtonContainer}>
