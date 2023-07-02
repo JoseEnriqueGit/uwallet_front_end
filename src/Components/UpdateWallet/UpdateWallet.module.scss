@@ -79,17 +79,6 @@
 		}
 	}
 
-	label {
-		// @include label();
-
-		input {
-			// @include Input();
-		}
-		input:focus {
-			// @include inputFocus();
-		}
-	}
-
 	.ButtonContainer {
 		// Composition
 		display: flex;
@@ -120,5 +109,12 @@
 				$fontColor: $Bg
 			);
 		}
+	}
+
+	.Warning {
+		// Typography
+		font-size: small;
+		font-weight: $SemiBold;
+		color: $RedF;
 	}
 }
