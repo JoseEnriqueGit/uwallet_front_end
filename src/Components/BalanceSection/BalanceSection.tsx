@@ -2,17 +2,14 @@
 import Styles from "./BalanceSection.module.scss";
 // Components
 import { Coins } from "@/src/Components";
-
+// Imports
 import { useBalance } from "../../Api/getUserBalance";
 import { useEffect } from "react";
+import { useAuth } from "@clerk/nextjs";
 
-interface BalanceSectionProps {
-	userId: string;
-	balance: number;
-}
-
-const BalanceSection = ({ balance, userId }: BalanceSectionProps) => {
-	const { data: balanceData, isLoading, isError, error } = useBalance(userId);
+const BalanceSection = () => {
+	const { userId } = useAuth();
+	const { data: balanceData, isLoading, isError, error } = useBalance(userId!);
 
 	useEffect(() => {
 		if (isError) {
@@ -28,8 +25,10 @@ const BalanceSection = ({ balance, userId }: BalanceSectionProps) => {
 
 				{isLoading ? (
 					<span className={Styles.loadingContainer}>Loading...</span>
-				) : (
+				) : userId ? (
 					<span>{balanceData} Pesos</span>
+				) : (
+					<span>0 Pesos</span>
 				)}
 			</div>
 		</div>
