@@ -3,7 +3,7 @@ import { NumericFormat } from "react-number-format";
 
 interface IInputNumberProps {
 	label: string;
-	value?: string;
+	value?: number;
 	onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 	allowNegative?: boolean;
 	maxLength?: number;
@@ -15,6 +15,7 @@ const NumberInput = (props: IInputNumberProps) => {
 			{props.label}
 			<NumericFormat
 				value={props.value || ""}
+				onChange={props.onChange}
 				allowLeadingZeros
 				thousandSeparator=","
 				allowNegative={props.allowNegative}
