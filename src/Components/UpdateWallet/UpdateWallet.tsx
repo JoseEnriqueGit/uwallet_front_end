@@ -8,35 +8,53 @@ import {
 	Plus,
 	NumberInput,
 } from "@/src/Components";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { useAuth } from "@clerk/nextjs";
+import { useQueryClient } from 'react-query';
 
 const UpdateWallet = () => {
 	const { userId } = useAuth();
-	const [amount, setAmount] = useState(0);
+	const [amount, setAmount] = useState(undefined);
+	const [isAmountFalse, setIsAmountFalse] = useState(false);
+	const queryClient = useQueryClient();
 
 	const handleInputChange = (event: any) => {
 		setAmount(event.target.value);
 	};
 
-	const handleClickMinus = async (userId: any, amount: any, transferType: any) => {
+	const handleClick = async (userId: any, amount: any, transferType: any) => {
 		try {
-			const response = await axios.post(
-				"https://apiuwallet.onrender.com/user-history",
-				{
-					user_id: userId,
-					transfer_type: transferType,
-					amount: amount,
-					description: "",
-					expenses_type: "UNDEFINED",
-				}
-			);
-			console.log(response.data); // Hacer algo con la respuesta del backend si es necesario
+			if (!amount) {
+				setIsAmountFalse(true);
+			} else {
+				const response = await axios.post(
+					"https://apiuwallet.onrender.com/user-history",
+					{
+						user_id: userId,
+						transfer_type: transferType,
+						amount: amount,
+						description: null,
+						expenses_type: "UNDEFINED",
+					}
+				);
+				queryClient.invalidateQueries(['balance', userId]);
+				setAmount(undefined);
+			}
 		} catch (error) {
 			console.error(error);
 		}
 	};
+
+	useEffect(() => {
+		const timer = setTimeout(() => {
+			if (isAmountFalse) {
+				setIsAmountFalse(false);
+			}
+		}, 4000);
+
+		return () => clearTimeout(timer);
+	}, [isAmountFalse]);
 
 	return (
 		<div className={Styles.UpdateWalletContainer}>
@@ -48,13 +66,27 @@ const UpdateWallet = () => {
 				<SquareRoundedPlus strokeWidth={2.5} />
 			</div>
 
-			<NumberInput label="MONEY:" allowNegative={false} value={amount} onChange={handleInputChange} />
+			<NumberInput
+				label="MONEY:"
+				allowNegative={false}
+				value={amount}
+				onChange={handleInputChange}
+			/>
+			{isAmountFalse ? (
+				<span className={Styles.Warning}>Please enter a value</span>
+			) : null}
 
 			<div className={Styles.ButtonContainer}>
-				<button className={Styles.ButtonMinus} onClick={() => handleClickMinus(userId, amount, "spent")}>
+				<button
+					className={Styles.ButtonMinus}
+					onClick={() => handleClick(userId, amount, "spent")}
+				>
 					<Minus width={30} height={30} stroke={"#222531"} />
 				</button>
-				<button className={Styles.ButtonPlus} onClick={() => handleClickMinus(userId, amount, "income")}>
+				<button
+					className={Styles.ButtonPlus}
+					onClick={() => handleClick(userId, amount, "income")}
+				>
 					<Plus width={30} height={30} stroke={"#222531"} />
 				</button>
 			</div>
