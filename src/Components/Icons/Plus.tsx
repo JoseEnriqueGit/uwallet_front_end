@@ -3,7 +3,6 @@ import { IconPropsTypes } from "./Types/IconPropsTypes";
 const Plus = ({
 	width = 24,
 	height = 24,
-	fill = "none",
 	stroke = "currentColor",
 	strokeWidth = 3,
 	...props
