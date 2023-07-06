@@ -70,6 +70,9 @@
 		color: $fontColor;
 		font-weight: $Medium;
 		font-size: small;
+	} @else if $hasLetters == false {
+		// Composition
+		padding: 6px;
 	} @else {
 		@error "Unknown type of button #{$type}.";
 	}
@@ -84,6 +87,9 @@
 	@if $hasLetters {
 		// Typography
 		color: $fontColor;
+	} @else if $hasLetters == false {
+		// Typography
+		color: none;
 	} @else {
 		@error "Unknown type of button #{$type}.";
 	}
