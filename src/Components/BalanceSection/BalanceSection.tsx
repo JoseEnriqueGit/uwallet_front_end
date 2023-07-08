@@ -1,7 +1,7 @@
 // Styles
 import Styles from "./BalanceSection.module.scss";
 // Components
-import { Coins } from "@/src/Components";
+import { SettingDolar, ArrowExchange } from "@/src/Components";
 // Imports
 import { useBalance } from "../../Api/getUserBalance";
 import { useEffect } from "react";
@@ -18,20 +18,40 @@ const BalanceSection = () => {
 	}, [isError, error]);
 
 	return (
-		<div className={Styles.BalanceContainer}>
-			<span className={Styles.BalanceSpan}>Balance total</span>
-			<div className={Styles.TotalOutput}>
-				<Coins strokeWidth={2.5} />
+		<article className={Styles.BalanceContainer}>
+			<section className={Styles.CurrencyContainer}>
+				<span className={Styles.BalanceSpan}>Your Balance</span>
+				<div className={Styles.TotalOutput}>
+					{isLoading ? (
+						<output className={Styles.loadingContainer}></output>
+					) : userId ? (
+						<output>
+							{balanceData}
+							<div>
+								<div className={Styles.MainCurrency}>USD</div>
+								<ArrowExchange />
+								<div className={Styles.SecondCurrency}>DOP</div>
+							</div>
+						</output>
+					) : (
+						<span>0 USD</span>
+					)}
+				</div>
+				<div className={Styles.PriceCurrency}>
+					<span>
+						<div className={Styles.MainCurrencyPrice}>1 USD</div>
+						<div>=</div>
+						<div className={Styles.SecondCurrencyPrice}>55.76 DOP</div>
+					</span>
+				</div>
+			</section>
 
-				{isLoading ? (
-					<span className={Styles.loadingContainer}>Loading...</span>
-				) : userId ? (
-					<span>{balanceData} Pesos</span>
-				) : (
-					<span>0 Pesos</span>
-				)}
-			</div>
-		</div>
+			<section className={Styles.BtnContainer}>
+				<button className={Styles.Button}>
+					<SettingDolar strokeWidth={2} />
+				</button>
+			</section>
+		</article>
 	);
 };
 
