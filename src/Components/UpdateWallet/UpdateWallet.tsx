@@ -69,7 +69,6 @@ const UpdateWallet = () => {
 		<div className={Styles.UpdateWalletContainer}>
 			<div className={Styles.UpdateWalletHead}>
 				<div>
-					<NewFile strokeWidth={2.5} />
 					<span>UPDATE WALLET</span>
 				</div>
 				<SquareRoundedPlus strokeWidth={2.5} />
