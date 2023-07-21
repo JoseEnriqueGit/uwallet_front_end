@@ -36,7 +36,7 @@ const UpdateWallet = () => {
 						transfer_type: transferType,
 						amount: amount,
 						description: null,
-						expenses_type: "UNDEFINED",
+						expenses_type: "UNDEFINED"
 					}
 				);
 				queryClient.invalidateQueries(["balance", userId]);
