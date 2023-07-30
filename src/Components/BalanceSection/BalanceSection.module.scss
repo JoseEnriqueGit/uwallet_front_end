@@ -133,6 +133,13 @@
 	}
 
 	section.BtnContainer {
+		/* Box-model */
+		gap: 5px;
+		/* Composition */
+		display: flex;
+		flex-direction: row;
+		align-items: flex-start;
+
 		button {
 			@include Button($Backg: $Pri, $H: none, $fontColor: $Bg);
 		}

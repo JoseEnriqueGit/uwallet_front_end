@@ -1,7 +1,7 @@
 // Styles
 import Styles from "./BalanceSection.module.scss";
 // Components
-import { SettingDolar, ArrowExchange } from "@/src/Components";
+import { SettingDolar, ArrowExchange, Wallet } from "@/src/Components";
 // Imports
 import { useBalance } from "../../Api/getUserBalance";
 import { useEffect } from "react";
@@ -47,6 +47,9 @@ const BalanceSection = () => {
 			</section>
 
 			<section className={Styles.BtnContainer}>
+				<button className={Styles.Button}>
+					<Wallet strokeWidth={2} />
+				</button>
 				<button className={Styles.Button}>
 					<SettingDolar strokeWidth={2} />
 				</button>

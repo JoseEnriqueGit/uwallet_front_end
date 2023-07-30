@@ -8,4 +8,5 @@ export { default as Plus } from './Icons/Plus';
 export { default as SettingDolar } from './Icons/SettingDolar';
 export { default as SquareRoundedPlus } from './Icons/SquareRoundedPlus';
 export * from './Icons/Types/IconPropsTypes';
+export { default as Wallet } from './Icons/Wallet';
 export { default as UpdateWallet } from './UpdateWallet/UpdateWallet';
