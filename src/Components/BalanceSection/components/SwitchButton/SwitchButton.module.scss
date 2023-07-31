@@ -1,0 +1,75 @@
+// Utils
+@use "utils/variables" as *;
+@use "utils/mixins" as *;
+
+.SwitchButtonContainer {
+	/* Composition */
+	display: flex;
+	align-items: center;
+	width: fit-content;
+	gap: 5px;
+	background-color: $Bg;
+	padding: 8px 10px;
+	border-radius: $ContainerBorderRadius;
+	/* Typography */
+	font-size: larger;
+	font-weight: $SemiBold;
+	color: $Green;
+	// visual effects
+	transition: all 0.2s;
+
+	.TotalOutput {
+		/* Composition */
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+	}
+
+	div {
+		/* Composition */
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		/* Typography */
+		font-size: smaller;
+		color: $Sec;
+
+		.MainCurrency {
+			/* Typography */
+			font-size: larger;
+			font-weight: $SemiBold;
+			color: $Green;
+		}
+	}
+}
+
+/* Skeleton loading styles */
+.loadingContainer {
+	width: 100%;
+	min-height: 36px;
+	background-color: $Bg;
+	border-radius: $ContainerBorderRadius;
+	animation: loading 0.8s ease-in-out infinite;
+}
+
+@keyframes loading {
+	0% {
+		opacity: 1;
+	}
+
+	50% {
+		opacity: 0.5;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+.SwitchButtonContainer:is(:hover, :focus) {
+	// Visual
+	// background-color: rgba($color: $DarkHover, $alpha: 0.8);
+	box-shadow: 0 0 0 2px $Pri, 0 0 0 3.5px $Green;
+	// Visual effects
+	transition: all 0.2s;
+}

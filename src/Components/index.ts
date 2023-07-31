@@ -1,4 +1,5 @@
 export { default as BalanceSection } from './BalanceSection/BalanceSection';
+export { default as SwitchButton } from './BalanceSection/components/SwitchButton/SwitchButton';
 export { default as Input } from './Form/Input/Input';
 export { default as NumberInput } from './Form/NumberInput/NumberInput';
 export { default as ArrowExchange } from './Icons/ArrowExchange';
@@ -9,4 +10,6 @@ export { default as SettingDolar } from './Icons/SettingDolar';
 export { default as SquareRoundedPlus } from './Icons/SquareRoundedPlus';
 export * from './Icons/Types/IconPropsTypes';
 export { default as Wallet } from './Icons/Wallet';
+export { default as X } from './Icons/X';
 export { default as UpdateWallet } from './UpdateWallet/UpdateWallet';
+export { default as UserWalletsSection } from './UserWalletsSection/UserWalletsSection';
