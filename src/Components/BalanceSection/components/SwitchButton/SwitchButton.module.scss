@@ -18,11 +18,14 @@
 	// visual effects
 	transition: all 0.2s;
 
-	.TotalOutput {
+	output {
 		/* Composition */
 		display: flex;
 		align-items: center;
 		flex-wrap: wrap;
+
+		// Typography
+		color: $Green;
 	}
 
 	div {

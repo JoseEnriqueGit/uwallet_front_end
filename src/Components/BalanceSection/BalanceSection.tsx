@@ -1,60 +1,44 @@
 // Styles
 import Styles from "./BalanceSection.module.scss";
 // Components
-import { SettingDolar, ArrowExchange, Wallet } from "@/src/Components";
+import {
+	SettingDolar,
+	Wallet,
+	UserWalletsSection,
+	SwitchButton,
+} from "@/src/Components";
 // Imports
-import { useBalance } from "../../Api/getUserBalance";
-import { useEffect } from "react";
-import { useAuth } from "@clerk/nextjs";
+import { useState } from "react";
 
 const BalanceSection = () => {
-	const { userId } = useAuth();
-	const { data: balanceData, isLoading, isError, error } = useBalance(userId!);
+	const [seeWallets, setseeWallets] = useState(false);
 
-	useEffect(() => {
-		if (isError) {
-			console.error("Error fetching balance:", error);
-		}
-	}, [isError, error]);
+	const handleSeeWallets = () => {
+		setseeWallets(!seeWallets);
+	};
 
 	return (
-		<article className={Styles.BalanceContainer}>
-			<section className={Styles.CurrencyContainer}>
-				<span className={Styles.BalanceSpan}>Your Balance</span>
-				<div className={Styles.TotalOutput}>
-					{isLoading ? (
-						<output className={Styles.loadingContainer}></output>
-					) : userId ? (
-						<output>
-							{balanceData}
-							<div>
-								<div className={Styles.MainCurrency}>USD</div>
-								<ArrowExchange />
-								<div className={Styles.SecondCurrency}>DOP</div>
-							</div>
-						</output>
-					) : (
-						<span>0 USD</span>
-					)}
-				</div>
-				<div className={Styles.PriceCurrency}>
-					<span>
-						<div className={Styles.MainCurrencyPrice}>1 USD</div>
-						<div>=</div>
-						<div className={Styles.SecondCurrencyPrice}>55.76 DOP</div>
-					</span>
-				</div>
-			</section>
+		<>
+			{!seeWallets ? (
+				<article className={Styles.BalanceContainer}>
+					<section className={Styles.CurrencyContainer}>
+						<span className={Styles.BalanceSpan}>Your Balance</span>
+						<SwitchButton />
+					</section>
 
-			<section className={Styles.BtnContainer}>
-				<button className={Styles.Button}>
-					<Wallet strokeWidth={2} />
-				</button>
-				<button className={Styles.Button}>
-					<SettingDolar strokeWidth={2} />
-				</button>
-			</section>
-		</article>
+					<section className={Styles.BtnContainer}>
+						<button onClick={handleSeeWallets} className={Styles.Button}>
+							<Wallet strokeWidth={2} />
+						</button>
+						<button className={Styles.Button}>
+							<SettingDolar strokeWidth={2} />
+						</button>
+					</section>
+				</article>
+			) : (
+				<UserWalletsSection handleSeeWallets={handleSeeWallets} />
+			)}
+		</>
 	);
 };
 

@@ -1,0 +1,55 @@
+// Utils
+@use "utils/variables" as *;
+@use "utils/mixins" as *;
+
+.ContainerWalletCard {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	background-color: $Bg;
+	padding: 12px 10px;
+	border-radius: $ContainerBorderRadius;
+
+	.ContainerBody {
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+		gap: 10px;
+
+		@media (width <= 280px) {
+			// Composition
+			flex-wrap: wrap;
+		}
+
+		.ContainerWallet {
+			display: flex;
+			flex-direction: column;
+			width: fit-content;
+			gap: 5px;
+
+			.WalletName {
+				font-weight: $SemiBold;
+			}
+			.WalletBalance {
+				color: $Green;
+			}
+		}
+		.ContainerTranstion {
+			display: flex;
+			flex-direction: column;
+			width: fit-content;
+			gap: 5px;
+
+			.LastTransactionTitle {
+				font-weight: $SemiBold;
+			}
+
+			.LastTransactionSpent {
+				color: $RedF;
+			}
+			.LastTransactionIncome {
+				color: $Green;
+			}
+		}
+	}
+}

@@ -21,7 +21,7 @@ const SwitchButton = () => {
 				<output className={Styles.loadingContainer}></output>
 			) : userId ? (
 				<div className={Styles.SwitchButtonContainer}>
-					<output className={Styles.TotalOutput}>
+					<output>
 						{balanceData}&nbsp;
 						<div>
 							<div className={Styles.MainCurrency}>USD</div>

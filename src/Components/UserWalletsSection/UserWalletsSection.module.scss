@@ -1,0 +1,121 @@
+// Utils
+@use "utils/variables" as *;
+@use "utils/mixins" as *;
+
+.UserWalletsSectionContainer {
+	/* Box-model */
+	padding: $PaddingsConteiner;
+	gap: 10px;
+	/* Composition */
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+	/* Visual */
+	background-color: $Pri;
+	border-radius: $ContainerBorderRadius;
+
+	.ContainerHead {
+		width: 100%;
+		/* Box-model */
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+
+		.CurrentWalletContainer {
+			// Box-model
+			background-color: $Bg;
+			padding: 0px 10px;
+			height: 100%;
+			border-radius: $ContainerBorderRadius;
+			// Composition
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			span {
+				/* Typography */
+				font-size: large;
+				font-weight: $SemiBold;
+
+				.CurrentWallet {
+					/* Visual */
+					color: $Green;
+				}
+			}
+		}
+
+		button {
+			@include Button($Backg: $Pri, $W: none, $H: none, $fontColor: $Bg);
+		}
+		button:hover {
+			@include ButtonHover(
+				$Backg: $Bg,
+				$alpha: 1,
+				$hasLetters: true,
+				$fontColor: $Bg
+			);
+		}
+	}
+
+	.CurrentBalanceContainer {
+		width: 100%;
+		/* Box-model */
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		gap: 10px;
+
+		span {
+			font-weight: 600;
+		}
+
+		.Balance {
+			// Box-model
+			display: flex;
+			align-items: center;
+			background-color: $Bg;
+			width: fit-content;
+			padding: 0px 10px;
+			height: 100%;
+			min-height: 36px;
+			border-radius: $ContainerBorderRadius;
+			/* Visual */
+			color: $Green;
+			/* Typography */
+			font-size: large;
+			font-weight: $SemiBold;
+		}
+	}
+
+	.ContainerWalletsList {
+		.ContainerHead {
+			display: flex;
+			justify-content: space-between;
+
+			span {
+				display: flex;
+				align-items: center;
+				font-size: large;
+				font-weight: 600;
+			}
+
+			button {
+				@include Button(
+					$Backg: $Pri,
+					$W: fit-content,
+					$H: fit-content,
+					$hasLetters: false,
+					$fontColor: $Sec
+				);
+			}
+			button:hover {
+				@include ButtonHover(
+					$Backg: $Bg,
+					$alpha: 0.8,
+					$hasLetters: false,
+					$fontColor: $Sec
+				);
+			}
+		}
+	}
+}

@@ -14,12 +14,12 @@
 	background-color: $Pri;
 	border-radius: $ContainerBorderRadius;
 
-	section.CurrencyContainer {
+	.CurrencyContainer {
 		/* Box-model */
 		display: flex;
 		flex-direction: column;
 		gap: 10px;
-		margin: 0px 5px;
+		width: 100%;
 
 		.BalanceSpan {
 			/* Visual */
@@ -29,84 +29,6 @@
 			font-weight: $SemiBold;
 		}
 
-		.TotalOutput {
-			/* Box-model */
-			gap: 10px;
-			/* Composition */
-			display: flex;
-			flex-direction: column;
-
-			output{
-				/* Composition */
-				display: flex;
-				// align-items: center;
-				gap: 5px;
-				background-color: $Bg;
-				padding: 5px 10px;
-				border-radius: $ContainerBorderRadius;
-				/* Typography */
-				font-size: larger;
-				font-weight: $SemiBold;
-				color: $Green;
-				// visual effects
-				transition: all 0.2s;
-
-				@media (width <= 280px) {
-					// Composition
-					width: 100%;
-					display: flex;
-					flex-direction: column;
-				}
-
-				div {
-					/* Composition */
-					display: flex;
-					align-items: center;
-					gap: 10px;
-					/* Typography */
-					font-size: smaller;
-					color: $Sec;
-
-					.MainCurrency {
-						/* Typography */
-						font-size: larger;
-						font-weight: $SemiBold;
-						color: $Green;
-					}
-				}
-
-				/* Skeleton loading styles */
-				&.loadingContainer {
-					display: inline-block;
-					width: 100px; /* Ajusta el ancho según sea necesario */
-					height: 20px; /* Ajusta la altura según sea necesario */
-					position: relative;
-					overflow: hidden;
-					background-color: $Pri;
-					border-radius: 4px;
-					animation: loading 1.5s infinite linear;
-				}
-
-				&.loadingContainer::before {
-					content: "";
-					position: absolute;
-					top: 0;
-					left: 0;
-					width: 200px;
-					height: 100%;
-					background: linear-gradient(90deg, $Pri, $Bg, $Pri);
-					background-size: 200px 100%;
-					animation: loading 1.5s infinite linear;
-				}
-			}
-			output:is(:hover, :focus) {
-				// Visual
-				background-color: rgba($color: $DarkHover, $alpha: 0.8);
-				box-shadow: 0 0 0 2px $Pri, 0 0 0 3.5px $Green;
-				// Visual effects
-				transition: all 0.2s;
-			}
-		}
 		.PriceCurrency {
 			/* Composition */
 			display: flex;
@@ -137,11 +59,17 @@
 		gap: 5px;
 		/* Composition */
 		display: flex;
-		flex-direction: row;
+		// flex-direction: row;
+		flex-wrap: nowrap;
 		align-items: flex-start;
 
+		@media (width <= 280px) {
+			// Composition
+			flex-wrap: wrap;
+		}
+
 		button {
-			@include Button($Backg: $Pri, $H: none, $fontColor: $Bg);
+			@include Button($Backg: $Pri, $W: fit-content, $H: none, $fontColor: $Bg);
 		}
 		button:hover {
 			@include ButtonHover(
@@ -151,14 +79,5 @@
 				$fontColor: $Bg
 			);
 		}
-	}
-}
-
-@keyframes loading {
-	0% {
-		background-position: -200px 0;
-	}
-	100% {
-		background-position: calc(200px + 100%) 0;
 	}
 }
