@@ -2,43 +2,6 @@
 @use "utils/variables" as *;
 @use "utils/mixins" as *;
 
-.OverviewHead {
-	// Box-model
-	padding: $PaddingsConteiner;
-	gap: 8px;
-	// Composition
-	display: flex;
-	flex-direction: column;
-	// Visual
-	background-color: $Pri;
-	border-radius: $ContainerBorderRadius;
-
-	.BalanceSpan {
-		// Visual
-		color: $Sec;
-		// Typography
-		font-size: large;
-		font-weight: $SemiBold;
-	}
-	.TotalOutput {
-		// Box-model
-		gap: 10px;
-		// Composition
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-
-		span {
-			// Composition
-			display: flex;
-			align-self: flex-end;
-			// Typography
-			font-size: larger;
-			font-weight: $SemiBold;
-			color: $Green;
-		}
-	}
-}
 .UpdateWalletContainer {
 	// Box-model
 	padding: $PaddingsConteiner;
@@ -67,15 +30,9 @@
 			gap: 8px;
 
 			span {
-				@include TitleContainer();
+				// UPDATE WALLET TITLE
+				@include TextStyles($FontSize: larger, $FontColor: none, $FontWeight: $SemiBold);
 			}
-		}
-
-		.LinkUpdateWallet {
-			// @include Link($Bg: $Bg, $W: 32px, $H: 32px);
-		}
-		.LinkUpdateWallet:hover {
-			// @include LinkHover($Bg: $DarkHover, $alpha: 1);
 		}
 	}
 
@@ -111,6 +68,7 @@
 		}
 	}
 
+	// Warnings Text
 	.Warning {
 		// Typography
 		font-size: small;

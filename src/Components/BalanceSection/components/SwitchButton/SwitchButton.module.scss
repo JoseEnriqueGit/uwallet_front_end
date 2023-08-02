@@ -11,10 +11,6 @@
 	background-color: $Bg;
 	padding: 8px 10px;
 	border-radius: $ContainerBorderRadius;
-	/* Typography */
-	font-size: larger;
-	font-weight: $SemiBold;
-	color: $Green;
 	// visual effects
 	transition: all 0.2s;
 
@@ -25,7 +21,7 @@
 		flex-wrap: wrap;
 
 		// Typography
-		color: $Green;
+		@include TextStyles($FontSize: large, $FontColor: $Green, $FontWeight: $SemiBold);
 	}
 
 	div {
@@ -33,15 +29,20 @@
 		display: flex;
 		align-items: center;
 		gap: 10px;
-		/* Typography */
-		font-size: smaller;
-		color: $Sec;
 
 		.MainCurrency {
-			/* Typography */
-			font-size: larger;
-			font-weight: $SemiBold;
-			color: $Green;
+			@include TextStyles(
+				$FontSize: large,
+				$FontColor: $Green,
+				$FontWeight: $SemiBold
+			);
+		}
+		.SecondCurrency {
+			@include TextStyles(
+				$FontSize: medium,
+				$FontColor: $Sec,
+				$FontWeight: $SemiBold
+			);
 		}
 	}
 }
@@ -71,7 +72,6 @@
 
 .SwitchButtonContainer:is(:hover, :focus) {
 	// Visual
-	// background-color: rgba($color: $DarkHover, $alpha: 0.8);
 	box-shadow: 0 0 0 2px $Pri, 0 0 0 3.5px $Green;
 	// Visual effects
 	transition: all 0.2s;

@@ -23,7 +23,7 @@ const UserWalletsSection = (props: Props) => {
 			</section>
 
 			<section className={Styles.CurrentBalanceContainer}>
-				<span>Your Balance</span>
+				<span className={Styles.Title}>Your Balance</span>
 				<span className={Styles.Balance}>1500.00 USD</span>
 			</section>
 

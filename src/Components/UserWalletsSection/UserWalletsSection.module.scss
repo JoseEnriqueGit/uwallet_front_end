@@ -33,13 +33,18 @@
 			align-items: center;
 
 			span {
-				/* Typography */
-				font-size: large;
-				font-weight: $SemiBold;
+				@include TextStyles(
+					$FontSize: large,
+					$FontColor: $Sec,
+					$FontWeight: $SemiBold
+				);
 
 				.CurrentWallet {
-					/* Visual */
-					color: $Green;
+					@include TextStyles(
+						$FontSize: none,
+						$FontColor: $Green,
+						$FontWeight: none
+					);
 				}
 			}
 		}
@@ -65,8 +70,12 @@
 		justify-content: space-between;
 		gap: 10px;
 
-		span {
-			font-weight: 600;
+		.Title {
+			@include TextStyles(
+				$FontSize: medium,
+				$FontColor: $Sec,
+				$FontWeight: $SemiBold
+			);
 		}
 
 		.Balance {
@@ -79,11 +88,12 @@
 			height: 100%;
 			min-height: 36px;
 			border-radius: $ContainerBorderRadius;
-			/* Visual */
-			color: $Green;
-			/* Typography */
-			font-size: large;
-			font-weight: $SemiBold;
+			// Typography
+			@include TextStyles(
+				$FontSize: larger,
+				$FontColor: $Green,
+				$FontWeight: $SemiBold
+			);
 		}
 	}
 
@@ -93,10 +103,11 @@
 			justify-content: space-between;
 
 			span {
-				display: flex;
-				align-items: center;
-				font-size: large;
-				font-weight: 600;
+				@include TextStyles(
+					$FontSize: larger,
+					$FontColor: none,
+					$FontWeight: $SemiBold
+				);
 			}
 
 			button {

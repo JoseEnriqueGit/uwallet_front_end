@@ -22,11 +22,8 @@
 		width: 100%;
 
 		.BalanceSpan {
-			/* Visual */
-			color: $Sec;
-			/* Typography */
-			font-size: medium;
-			font-weight: $SemiBold;
+			// Your Balance
+			@include TextStyles($FontSize: medium, $FontColor: none, $FontWeight: $SemiBold);
 		}
 
 		.PriceCurrency {

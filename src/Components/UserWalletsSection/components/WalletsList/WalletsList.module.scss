@@ -28,10 +28,10 @@
 			gap: 5px;
 
 			.WalletName {
-				font-weight: $SemiBold;
+				@include TextStyles($FontSize: none, $FontColor: none, $FontWeight: $SemiBold);
 			}
 			.WalletBalance {
-				color: $Green;
+				@include TextStyles($FontSize: none, $FontColor: $Green, $FontWeight: none);
 			}
 		}
 		.ContainerTranstion {
@@ -41,14 +41,14 @@
 			gap: 5px;
 
 			.LastTransactionTitle {
-				font-weight: $SemiBold;
+				@include TextStyles($FontSize: none, $FontColor: none, $FontWeight: $SemiBold);
 			}
 
 			.LastTransactionSpent {
-				color: $RedF;
+				@include TextStyles($FontSize: none, $FontColor: $RedF, $FontWeight: none);
 			}
 			.LastTransactionIncome {
-				color: $Green;
+				@include TextStyles($FontSize: none, $FontColor: $Green, $FontWeight: none);
 			}
 		}
 	}
