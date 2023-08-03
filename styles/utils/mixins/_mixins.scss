@@ -57,9 +57,14 @@
 
 	@if $hasLetters {
 		// Typography
-		color: $fontColor;
-		font-weight: $Medium;
-		font-size: small;
+		// color: $fontColor;
+		// font-weight: $Bold;
+		// font-size: small;
+		@include TextStyles(
+			$FontSize: small,
+			$FontColor: $fontColor,
+			$FontWeight: $Bold
+		);
 	} @else if $hasLetters == false {
 		// Composition
 		padding: 6px;
@@ -76,10 +81,16 @@
 
 	@if $hasLetters {
 		// Typography
-		color: $fontColor;
+		// color: $fontColor;
+		@include TextStyles(
+			$FontSize: none,
+			$FontColor: $fontColor,
+			$FontWeight: none
+		);
 	} @else if $hasLetters == false {
 		// Typography
-		color: none;
+		// color: none;
+		@include TextStyles($FontSize: none, $FontColor: none, $FontWeight: none);
 	} @else {
 		@error "Unknown type of button #{$type}.";
 	}

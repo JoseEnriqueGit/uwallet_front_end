@@ -70,9 +70,6 @@
 
 	// Warnings Text
 	.Warning {
-		// Typography
-		font-size: small;
-		font-weight: $SemiBold;
-		color: $RedF;
+		@include TextStyles($FontSize: small, $FontColor: $RedF, $FontWeight: $SemiBold);
 	}
 }

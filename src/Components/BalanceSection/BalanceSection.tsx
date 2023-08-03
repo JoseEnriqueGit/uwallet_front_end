@@ -1,42 +1,48 @@
-// Styles
 import Styles from "./BalanceSection.module.scss";
-// Components
+import React, { useContext } from "react";
 import {
 	SettingDolar,
 	Wallet,
 	UserWalletsSection,
 	SwitchButton,
 } from "@/src/Components";
-// Imports
-import { useState } from "react";
+import { ViewContext } from "@/src/useContext/ViewContext";
 
-const BalanceSection = () => {
-	const [seeWallets, setseeWallets] = useState(false);
+interface GeneralViewProps {
+	toggleView: () => void;
+}
 
-	const handleSeeWallets = () => {
-		setseeWallets(!seeWallets);
+const GeneralView: React.FC<GeneralViewProps> = ({ toggleView }) => (
+	<div className={Styles.BalanceContainer}>
+		<section className={Styles.CurrencyContainer}>
+			<span className={Styles.BalanceSpan}>Your Balance</span>
+			<SwitchButton />
+		</section>
+
+		<section className={Styles.BtnContainer}>
+			<button onClick={toggleView} className={Styles.Button}>
+				<Wallet strokeWidth={2} />
+			</button>
+			<button className={Styles.Button}>
+				<SettingDolar strokeWidth={2} />
+			</button>
+		</section>
+	</div>
+);
+
+const BalanceSection: React.FC = () => {
+	const { currentView, setCurrentView } = useContext(ViewContext);
+
+	const toggleView = () => {
+		setCurrentView(currentView === "UserWallets" ? "General" : "UserWallets");
 	};
 
 	return (
 		<>
-			{!seeWallets ? (
-				<article className={Styles.BalanceContainer}>
-					<section className={Styles.CurrencyContainer}>
-						<span className={Styles.BalanceSpan}>Your Balance</span>
-						<SwitchButton />
-					</section>
-
-					<section className={Styles.BtnContainer}>
-						<button onClick={handleSeeWallets} className={Styles.Button}>
-							<Wallet strokeWidth={2} />
-						</button>
-						<button className={Styles.Button}>
-							<SettingDolar strokeWidth={2} />
-						</button>
-					</section>
-				</article>
+			{currentView === "General" ? (
+				<GeneralView toggleView={toggleView} />
 			) : (
-				<UserWalletsSection handleSeeWallets={handleSeeWallets} />
+				<UserWalletsSection handleSeeWallets={toggleView} />
 			)}
 		</>
 	);

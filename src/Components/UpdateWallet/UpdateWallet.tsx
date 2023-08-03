@@ -36,7 +36,7 @@ const UpdateWallet = () => {
 						transfer_type: transferType,
 						amount: amount,
 						description: null,
-						expenses_type: "UNDEFINED"
+						expenses_type: "UNDEFINED",
 					}
 				);
 				queryClient.invalidateQueries(["balance", userId]);
@@ -81,10 +81,10 @@ const UpdateWallet = () => {
 				onChange={handleInputChange}
 			/>
 			{isAmountFalse ? (
-				<span className={Styles.Warning}>Please enter a value</span>
+				<span className={Styles.Warning}>Please enter a value.</span>
 			) : null}
 			{hasInsufficientFunds ? (
-				<span className={Styles.Warning}>Insufficient funds</span>
+				<span className={Styles.Warning}>Insufficient funds.</span>
 			) : null}
 
 			<div className={Styles.ButtonContainer}>

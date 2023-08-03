@@ -3,6 +3,7 @@ import "../../styles/globals.scss";
 import { Inter } from "next/font/google";
 
 import { ClerkProvider } from "@clerk/nextjs";
+import { ViewProvider } from "../useContext/ViewContext";
 
 import Providers from "../utils/provider";
 
@@ -20,11 +21,15 @@ export default function RootLayout({
 }) {
 	return (
 		<ClerkProvider>
-			<html lang="en">
-				<body className={inter.className}>
-					<main><Providers>{children}</Providers></main>
-				</body>
-			</html>
+			<ViewProvider>
+				<html lang="en">
+					<body className={inter.className}>
+						<main>
+							<Providers>{children}</Providers>
+						</main>
+					</body>
+				</html>
+			</ViewProvider>
 		</ClerkProvider>
 	);
 }
