@@ -1,0 +1,68 @@
+// Utils
+@use "utils/variables" as *;
+@use "utils/mixins" as *;
+
+.NewWalletContainer {
+	/* Box-model */
+	padding: $PaddingsConteiner;
+	gap: 10px;
+	/* Composition */
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+	/* Visual */
+	background-color: $Pri;
+	border-radius: $ContainerBorderRadius;
+
+	.ContainerHead {
+		width: 100%;
+		/* Box-model */
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+
+		span {
+			@include TextStyles(
+				$FontSize: large,
+				$FontColor: $Sec,
+				$FontWeight: $SemiBold
+			);
+		}
+
+		button {
+			@include Button(
+				$Backg: $Pri,
+				$W: fit-content,
+				$H: fit-content,
+				$hasLetters: false,
+				$fontColor: $Bg
+			);
+		}
+		button:hover {
+			@include ButtonHover(
+				$Backg: $Bg,
+				$alpha: 1,
+				$hasLetters: false,
+				$fontColor: $Bg
+			);
+		}
+	}
+
+	.ContainerBody {
+	}
+
+	.ApplyBtn {
+		@include Button(
+			$Backg: $Green,
+			$H: 40px,
+			$hasLetters: true
+		);
+	}
+	.ApplyBtn:hover {
+		@include ButtonHover(
+			$Backg: $Wh,
+			$alpha: 1,
+			$hasLetters: true,
+		);
+	}
+}
