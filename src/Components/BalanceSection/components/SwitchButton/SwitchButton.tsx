@@ -22,12 +22,16 @@ const SwitchButton = () => {
 			) : userId ? (
 				<div className={Styles.SwitchButtonContainer}>
 					<output>
-						{balanceData}&nbsp;
-						<div>
-							<div className={Styles.MainCurrency}>USD</div>
-							<ArrowExchange />
-							<div className={Styles.SecondCurrency}>DOP</div>
-						</div>
+						{balanceData !== undefined && (
+							<>
+								{balanceData}&nbsp;
+								<div>
+									<div className={Styles.MainCurrency}>USD</div>
+									<ArrowExchange />
+									<div className={Styles.SecondCurrency}>DOP</div>
+								</div>
+							</>
+						)}
 					</output>
 				</div>
 			) : (
