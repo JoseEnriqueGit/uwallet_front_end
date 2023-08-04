@@ -37,7 +37,15 @@
 	transition: all 0.2s;
 }
 
-@mixin Button($Backg, $W: 100%, $H: 3rem, $hasLetters: false, $fontColor: $Bg) {
+@mixin Button(
+	$Backg,
+	$W: 100%,
+	$H: 3rem,
+	$hasLetters: false,
+	$fontColor: $Bg,
+	$FontSize: medium,
+	$FontWeight: $Bold
+) {
 	// Composition
 	display: flex;
 	flex-direction: row;
@@ -61,9 +69,9 @@
 		// font-weight: $Bold;
 		// font-size: small;
 		@include TextStyles(
-			$FontSize: small,
+			$FontSize: $FontSize,
 			$FontColor: $fontColor,
-			$FontWeight: $Bold
+			$FontWeight: $FontWeight
 		);
 	} @else if $hasLetters == false {
 		// Composition
