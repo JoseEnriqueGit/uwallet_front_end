@@ -2,7 +2,7 @@
 
 import { createContext, useState, ReactNode } from "react";
 
-type View = "General" | "UserWallets";
+type View = "General" | "UserWallets" | "NewWallet";
 
 type ViewContextValue = {
 	currentView: View;
