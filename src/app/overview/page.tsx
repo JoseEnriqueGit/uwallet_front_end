@@ -4,12 +4,13 @@ import Styles from "./Overview.module.scss";
 // React
 import React, { useContext } from "react";
 // Components
-import { BalanceSection, UpdateWallet } from "@/src/Components";
+import { BalanceSection, UpdateWallet, NewWallet } from "@/src/Components";
 import { ViewContext } from "@/src/useContext/ViewContext";
 
 enum CurrentView {
 	General = "General",
 	UserWallets = "UserWallets",
+	NewWallet = "NewWallet",
 }
 
 const OverviewPage: React.FC = (): JSX.Element => {
@@ -25,6 +26,8 @@ const OverviewPage: React.FC = (): JSX.Element => {
 			) : (
 				currentView === CurrentView.UserWallets && <BalanceSection />
 			)}
+
+			{currentView === CurrentView.NewWallet && <NewWallet />}
 		</article>
 	);
 };
