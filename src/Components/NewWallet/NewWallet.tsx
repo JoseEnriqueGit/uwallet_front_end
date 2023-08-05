@@ -1,6 +1,6 @@
 import Styles from "./NewWallet.module.scss";
 
-import { X, NumberInput } from "@/src/Components";
+import { X, NumberInput, Select } from "@/src/Components";
 import React, { useState, useContext } from "react";
 import { ViewContext } from "@/src/useContext/ViewContext";
 
@@ -32,6 +32,10 @@ const NewWallet = () => {
 					value={amount}
 					onChange={handleInputChange}
 				/>
+				<label>
+					CURRENCY:
+					<Select />
+				</label>
 			</div>
 
 			<button className={Styles.ApplyBtn}>APPLY</button>

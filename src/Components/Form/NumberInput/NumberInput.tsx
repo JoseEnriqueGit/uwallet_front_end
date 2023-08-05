@@ -1,4 +1,4 @@
-import Styles from "./Input.module.scss";
+import Styles from "./NumberInput.module.scss";
 import { NumericFormat } from "react-number-format";
 
 interface IInputNumberProps {

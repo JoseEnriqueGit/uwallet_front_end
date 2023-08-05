@@ -49,6 +49,13 @@
 	}
 
 	.ContainerBody {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+
+		label {
+			@include Label();
+		}
 	}
 
 	.ApplyBtn {
