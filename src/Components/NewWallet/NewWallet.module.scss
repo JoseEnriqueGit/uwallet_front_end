@@ -29,7 +29,7 @@
 			);
 		}
 
-		button {
+		.CloseBtn {
 			@include Button(
 				$Backg: $Pri,
 				$W: fit-content,
@@ -38,7 +38,7 @@
 				$fontColor: $Bg
 			);
 		}
-		button:hover {
+		.CloseBtn:hover {
 			@include ButtonHover(
 				$Backg: $Bg,
 				$alpha: 1,
@@ -53,23 +53,19 @@
 		flex-direction: column;
 		gap: 10px;
 
-		label {
+		.Select {
 			@include Label();
+
+			Svg {
+				fill: $Bg;
+			}
 		}
 	}
 
 	.ApplyBtn {
-		@include Button(
-			$Backg: $Green,
-			$H: 40px,
-			$hasLetters: true
-		);
+		@include Button($Backg: $Green, $H: 40px, $hasLetters: true);
 	}
 	.ApplyBtn:hover {
-		@include ButtonHover(
-			$Backg: $Wh,
-			$alpha: 1,
-			$hasLetters: true,
-		);
+		@include ButtonHover($Backg: $Wh, $alpha: 1, $hasLetters: true);
 	}
 }

@@ -6,7 +6,7 @@ import { ViewContext } from "@/src/useContext/ViewContext";
 
 const NewWallet = () => {
 	const { currentView, setCurrentView } = useContext(ViewContext);
-  const [amount, setAmount] = useState(undefined);
+	const [amount, setAmount] = useState(undefined);
 
 	const toggleView = () => {
 		setCurrentView(currentView === "UserWallets" ? "NewWallet" : "UserWallets");
@@ -20,7 +20,7 @@ const NewWallet = () => {
 		<section className={Styles.NewWalletContainer}>
 			<div className={Styles.ContainerHead}>
 				<span>NEW WALLET</span>
-				<button>
+				<button className={Styles.CloseBtn}>
 					<X onClick={toggleView} />
 				</button>
 			</div>
@@ -32,7 +32,7 @@ const NewWallet = () => {
 					value={amount}
 					onChange={handleInputChange}
 				/>
-				<label>
+				<label className={Styles.Select}>
 					CURRENCY:
 					<Select />
 				</label>
