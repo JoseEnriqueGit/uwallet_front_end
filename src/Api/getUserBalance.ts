@@ -3,12 +3,14 @@ import axios from "axios";
 
 interface BalanceData {
 	balance: number;
+	hasSecondWallet: boolean;
+	secondWalletCurrency: string;
 }
 
 const fetchBalance = async (userId: string): Promise<BalanceData> => {
 	try {
 		const response = await axios.get<BalanceData>(
-			`https://apiuwallet.onrender.com/users/balance/${userId}`
+			`/v1/users/wallet-information/${userId}`
 		);
 		return response.data;
 	} catch (error) {
