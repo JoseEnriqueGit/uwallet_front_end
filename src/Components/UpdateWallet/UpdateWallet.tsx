@@ -30,7 +30,7 @@ const UpdateWallet = () => {
 				setIsAmountFalse(true);
 			} else {
 				const response = await axios.post(
-					"https://apiuwallet.onrender.com/user-history",
+					`/v1/user-history`,
 					{
 						user_id: userId,
 						transfer_type: transferType,
