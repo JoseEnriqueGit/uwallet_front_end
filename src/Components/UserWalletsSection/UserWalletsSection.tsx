@@ -3,11 +3,19 @@ import Styles from "./UserWalletsSection.module.scss";
 // Components
 import { X, Plus, WalletsList } from "@/src/Components";
 
+import React, { useContext } from "react";
+import { ViewContext } from "@/src/useContext/ViewContext";
+
 interface Props {
 	handleSeeWallets: () => void;
 }
 
 const UserWalletsSection = (props: Props) => {
+	const { currentView, setCurrentView } = useContext(ViewContext);
+
+	const toggleView = () => {
+		setCurrentView(currentView === "UserWallets" ? "NewWallet" : "UserWallets");
+	};
 
 	return (
 		<article className={Styles.UserWalletsSectionContainer}>
@@ -30,7 +38,7 @@ const UserWalletsSection = (props: Props) => {
 			<section className={Styles.ContainerWalletsList}>
 				<div className={Styles.ContainerHead}>
 					<span>YOUR WALLETS</span>
-					<button>
+					<button onClick={toggleView}>
 						<Plus />
 					</button>
 				</div>
