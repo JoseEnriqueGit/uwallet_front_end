@@ -9,6 +9,8 @@ module.exports = {
 		return [
 			{
 				source: "/v1/:path*",
+				// destination: `${process.env.URL_API}/v1/:path*`,
+				// Local API route
 				destination: "http://localhost:3031/v1/:path*",
 			},
 		];
