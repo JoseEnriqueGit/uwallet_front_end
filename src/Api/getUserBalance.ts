@@ -3,6 +3,7 @@ import axios from "axios";
 
 interface BalanceData {
 	balance: number;
+	currency: string;
 	hasSecondWallet: boolean;
 	secondWalletCurrency: string;
 }
@@ -10,7 +11,7 @@ interface BalanceData {
 const fetchBalance = async (userId: string): Promise<BalanceData> => {
 	try {
 		const response = await axios.get<BalanceData>(
-			`/v1/users/wallet-information/${userId}`
+			`/v1/users/${userId}/wallet-information`
 		);
 		return response.data;
 	} catch (error) {
