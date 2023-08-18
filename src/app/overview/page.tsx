@@ -16,18 +16,26 @@ enum CurrentView {
 const OverviewPage: React.FC = (): JSX.Element => {
 	const { currentView } = useContext(ViewContext);
 
+	if (currentView === CurrentView.UserWallets) {
+		return (
+			<article className={Styles.ArticContainer}>
+				<BalanceSection />
+			</article>
+		);
+	}
+
+	if (currentView === CurrentView.NewWallet) {
+		return (
+			<article className={Styles.ArticContainer}>
+				<NewWallet />
+			</article>
+		);
+	}
+
 	return (
 		<article className={Styles.ArticContainer}>
-			{currentView === CurrentView.General ? (
-				<>
-					<BalanceSection />
-					<UpdateWallet />
-				</>
-			) : (
-				currentView === CurrentView.UserWallets && <BalanceSection />
-			)}
-
-			{currentView === CurrentView.NewWallet && <NewWallet />}
+			<BalanceSection />
+			<UpdateWallet />
 		</article>
 	);
 };

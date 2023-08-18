@@ -4,7 +4,6 @@ export { default as Input } from './Form/Input/Input';
 export { default as NumberInput } from './Form/NumberInput/NumberInput';
 export { default as CustomStyles } from './Form/Select/CustomStyles';
 export { default as Select } from './Form/Select/Select';
-export * from './Form/Select/dataExample';
 export { default as ArrowExchange } from './Icons/ArrowExchange';
 export { default as Minus } from './Icons/Minus';
 export { default as NewFile } from './Icons/NewFile';
