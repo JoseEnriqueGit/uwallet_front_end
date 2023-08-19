@@ -1,0 +1,84 @@
+// Utils
+@use "utils/variables" as *;
+@use "utils/mixins" as *;
+
+/* Skeleton loading styles */
+.loadingContainer {
+	width: 100%;
+	min-height: 36px;
+	background-color: $Bg;
+	border-radius: $ContainerBorderRadius;
+	animation: loading 0.8s ease-in-out infinite;
+}
+
+.SoloBanlace {
+	/* Composition */
+	display: flex;
+	align-items: center;
+	padding: 8px 10px;
+	width: fit-content;
+
+	height: 36px;
+	background-color: $Bg;
+	border-radius: $ContainerBorderRadius;
+	// Typography
+	@include TextStyles(
+		$FontSize: large,
+		$FontColor: $Green,
+		$FontWeight: $SemiBold
+	);
+}
+
+.SwitchButtonContainer {
+	/* Composition */
+	display: flex;
+	align-items: center;
+	width: fit-content;
+	flex-wrap: wrap;
+
+	gap: 5px;
+	background-color: $Bg;
+	padding: 8px 10px;
+	border-radius: $ContainerBorderRadius;
+	// visual effects
+	transition: all 0.2s;
+
+	.MainWalletContainer {
+		// Typography
+		@include TextStyles(
+			$FontSize: large,
+			$FontColor: $Green,
+			$FontWeight: $SemiBold
+		);
+	}
+
+	.SecondWalletCurrency {
+		// Typography
+		@include TextStyles(
+			$FontSize: large,
+			$FontColor: $Sec,
+			$FontWeight: $SemiBold
+		);
+	}
+}
+
+.SwitchButtonContainer:is(:hover, :focus) {
+	// Visual
+	box-shadow: 0 0 0 2px $Pri, 0 0 0 3.5px $Green;
+	// Visual effects
+	transition: all 0.2s;
+}
+
+@keyframes loading {
+	0% {
+		opacity: 1;
+	}
+
+	50% {
+		opacity: 0.5;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}

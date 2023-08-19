@@ -4,7 +4,7 @@ import {
 	SettingDolar,
 	Wallet,
 	UserWalletsSection,
-	SwitchButton,
+	DisplayBalance,
 } from "@/src/Components";
 import { ViewContext } from "@/src/useContext/ViewContext";
 
@@ -16,7 +16,7 @@ const GeneralView: React.FC<GeneralViewProps> = ({ toggleView }) => (
 	<div className={Styles.BalanceContainer}>
 		<section className={Styles.CurrencyContainer}>
 			<span className={Styles.BalanceSpan}>Your Balance</span>
-			<SwitchButton />
+			<DisplayBalance />
 		</section>
 
 		<section className={Styles.BtnContainer}>

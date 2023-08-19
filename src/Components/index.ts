@@ -1,5 +1,5 @@
 export { default as BalanceSection } from './BalanceSection/BalanceSection';
-export { default as SwitchButton } from './BalanceSection/components/SwitchButton/SwitchButton';
+export { default as DisplayBalance } from './BalanceSection/components/DisplayBalance/DisplayBalance';
 export { default as Input } from './Form/Input/Input';
 export { default as NumberInput } from './Form/NumberInput/NumberInput';
 export { default as CustomStyles } from './Form/Select/CustomStyles';
