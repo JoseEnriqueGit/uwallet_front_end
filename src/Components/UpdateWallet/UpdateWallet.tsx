@@ -1,54 +1,65 @@
-// Styles
-import Styles from "./UpdateWallet.module.scss";
-// Components
-import {
-	NewFile,
-	SquareRoundedPlus,
-	Minus,
-	Plus,
-	NumberInput,
-} from "@/src/Components";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, ChangeEvent } from "react";
 import axios from "axios";
 import { useAuth } from "@clerk/nextjs";
 import { useQueryClient } from "react-query";
+import { SquareRoundedPlus, Minus, Plus, NumberInput } from "@/src/components";
+import Styles from "./UpdateWallet.module.scss";
+interface IWarningMessages {
+	amountRequired: string;
+	insufficientFunds: string;
+}
 
-const UpdateWallet = () => {
+const warningMessages: IWarningMessages = {
+	amountRequired: "Please enter a value.",
+	insufficientFunds: "Insufficient funds.",
+};
+
+const UpdateWallet: React.FC = (): JSX.Element => {
 	const { userId } = useAuth();
-	const [amount, setAmount] = useState(undefined);
-	const [isAmountFalse, setIsAmountFalse] = useState(false);
-	const [hasInsufficientFunds, setHasInsufficientFunds] = useState(false);
+	const [formState, setFormState] = useState({
+		amount: "",
+		isAmountFalse: false,
+		hasInsufficientFunds: false,
+	});
 	const queryClient = useQueryClient();
 
-	const handleInputChange = (event: any) => {
-		setAmount(event.target.value);
+	const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+		setFormState({
+			...formState,
+			amount: event.target.value,
+		});
 	};
 
-	const handleClick = async (userId: any, amount: any, transferType: any) => {
+	const handleClick = async (transferType: string) => {
 		try {
-			if (!amount) {
-				setIsAmountFalse(true);
+			if (!formState.amount) {
+				setFormState({
+					...formState,
+					isAmountFalse: true,
+				});
 			} else {
-				const response = await axios.post(
-					`/v1/user-history`,
-					{
-						user_id: userId,
-						transfer_type: transferType,
-						amount: amount,
-						description: null,
-						expenses_type: "UNDEFINED",
-					}
-				);
+				const response = await axios.post(`/v1/user-history`, {
+					user_id: userId,
+					transfer_type: transferType,
+					amount: formState.amount,
+					description: null,
+					expenses_type: "UNDEFINED",
+				});
 				queryClient.invalidateQueries(["balance", userId]);
-				setAmount(undefined);
+				setFormState({
+					...formState,
+					amount: "",
+				});
 			}
 		} catch (error: any) {
 			if (
-				error.response &&
-				error.response.status === 400 &&
+				error?.response?.status === 400 &&
 				error.response.data.error === "Insufficient funds"
 			) {
-				setHasInsufficientFunds(true);
+				setFormState({
+					...formState,
+					hasInsufficientFunds: true,
+				});
 			} else {
 				console.error(error);
 			}
@@ -57,13 +68,16 @@ const UpdateWallet = () => {
 
 	useEffect(() => {
 		const timer = setTimeout(() => {
-			if (isAmountFalse) {
-				setIsAmountFalse(false);
+			if (formState.isAmountFalse) {
+				setFormState({
+					...formState,
+					isAmountFalse: false,
+				});
 			}
 		}, 4000);
 
 		return () => clearTimeout(timer);
-	}, [isAmountFalse]);
+	}, [formState.isAmountFalse]);
 
 	return (
 		<div className={Styles.UpdateWalletContainer}>
@@ -77,26 +91,28 @@ const UpdateWallet = () => {
 			<NumberInput
 				label="MONEY:"
 				allowNegative={false}
-				value={amount}
+				value={formState.amount}
 				onChange={handleInputChange}
 			/>
-			{isAmountFalse ? (
-				<span className={Styles.Warning}>Please enter a value.</span>
-			) : null}
-			{hasInsufficientFunds ? (
-				<span className={Styles.Warning}>Insufficient funds.</span>
-			) : null}
+			{formState.isAmountFalse && (
+				<span className={Styles.Warning}>{warningMessages.amountRequired}</span>
+			)}
+			{formState.hasInsufficientFunds && (
+				<span className={Styles.Warning}>
+					{warningMessages.insufficientFunds}
+				</span>
+			)}
 
 			<div className={Styles.ButtonContainer}>
 				<button
 					className={Styles.ButtonMinus}
-					onClick={() => handleClick(userId, amount, "spent")}
+					onClick={() => handleClick("spent")}
 				>
 					<Minus width={30} height={30} stroke={"#222531"} />
 				</button>
 				<button
 					className={Styles.ButtonPlus}
-					onClick={() => handleClick(userId, amount, "income")}
+					onClick={() => handleClick("income")}
 				>
 					<Plus width={30} height={30} stroke={"#222531"} />
 				</button>
