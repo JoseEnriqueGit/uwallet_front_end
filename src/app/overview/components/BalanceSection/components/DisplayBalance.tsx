@@ -4,31 +4,17 @@ import Styles from "./DisplayBalance.module.scss";
 import { ArrowExchange } from "@/src/components";
 import { useAuth } from "@clerk/nextjs";
 import axios from "axios";
-import { useEffect } from "react";
 import { useQueryClient } from "react-query";
-import { useBalance } from "../../../../../api/getUserBalance";
-
-interface BanlaceProps {
-	balance: number;
-	currency: string;
-	secondWalletCurrency?: string;
-}
+import { BalanceDataProps, BalanceDataEmptyState } from "../../../models";
+import { getBalance } from "../../../services";
 
 const DisplayBalance: React.FC = (): JSX.Element => {
 	const { userId } = useAuth();
 	const queryClient = useQueryClient();
-	const { data, isLoading, isError, error } = useBalance(userId!);
-	const { balance, currency, secondWalletCurrency, hasSecondWallet } = data || {
-		balance: 0,
-		currency: "",
-		secondWalletCurrency: "",
-	};
+	const { data, isLoading } = getBalance(userId!);
 
-	useEffect(() => {
-		if (isError) {
-			console.error("Error fetching balance:", error);
-		}
-	}, [isError, error]);
+	const { balance, currency, hasSecondWallet, secondWalletCurrency } =
+		data || BalanceDataEmptyState;
 
 	const handleSwitchWallet = async () => {
 		try {
@@ -39,7 +25,10 @@ const DisplayBalance: React.FC = (): JSX.Element => {
 		}
 	};
 
-	const SoloBanlace = ({ balance, currency }: BanlaceProps): JSX.Element => {
+	const SoloBanlace = ({
+		balance,
+		currency,
+	}: BalanceDataProps): JSX.Element => {
 		return (
 			<div className={Styles.SoloBanlace}>
 				{balance}
@@ -53,7 +42,7 @@ const DisplayBalance: React.FC = (): JSX.Element => {
 		balance,
 		currency,
 		secondWalletCurrency,
-	}: BanlaceProps): JSX.Element => {
+	}: BalanceDataProps): JSX.Element => {
 		return (
 			<div
 				className={Styles.SwitchButtonContainer}

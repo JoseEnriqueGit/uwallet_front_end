@@ -1,0 +1,36 @@
+// Utils
+@use "utils/variables" as *;
+@use "utils/mixins" as *;
+
+.ContainerWalletsList {
+	.ContainerHead {
+		display: flex;
+		justify-content: space-between;
+
+		span {
+			@include TextStyles(
+				$FontSize: larger,
+				$FontColor: none,
+				$FontWeight: $SemiBold
+			);
+		}
+
+		button {
+			@include Button(
+				$Backg: $Pri,
+				$W: fit-content,
+				$H: fit-content,
+				$hasLetters: false,
+				$fontColor: $Sec
+			);
+		}
+		button:hover {
+			@include ButtonHover(
+				$Backg: $Bg,
+				$alpha: 0.8,
+				$hasLetters: false,
+				$fontColor: $Sec
+			);
+		}
+	}
+}

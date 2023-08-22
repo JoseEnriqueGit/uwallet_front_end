@@ -1,32 +1,18 @@
 // Styles
 import Styles from "./UserWalletsSection.module.scss";
 // Components
-import { Plus, X } from "@/src/components";
-import { WalletsList } from "../";
+import { X } from "@/src/components";
+import { ContainerWalletsList } from "./components";
 
 import { ViewContext } from "@/src/context/ViewContext";
 import { useAuth } from "@clerk/nextjs";
-import { useContext, useEffect } from "react";
-import { useBalance } from "../../../../api/getUserBalance";
+import React, { useContext } from "react";
+import { getBalance } from "../../services";
 
-interface Props {
-	handleSeeWallets: () => void;
-}
-
-const UserWalletsSection = (props: Props) => {
-	const { currentView, setCurrentView } = useContext(ViewContext);
+const UserWalletsSection: React.FC = (): JSX.Element => {
 	const { userId } = useAuth();
-	const { data, isError, error } = useBalance(userId!);
-
-	useEffect(() => {
-		if (isError) {
-			console.error("Error fetching balance:", error);
-		}
-	}, [isError, error]);
-
-	const toggleView = () => {
-		setCurrentView(currentView === "UserWallets" ? "NewWallet" : "UserWallets");
-	};
+	const { setCurrentView } = useContext(ViewContext);
+	const { data } = getBalance(userId!);
 
 	return (
 		<article className={Styles.UserWalletsSectionContainer}>
@@ -37,7 +23,7 @@ const UserWalletsSection = (props: Props) => {
 						WALLET
 					</span>
 				</div>
-				<button onClick={props.handleSeeWallets}>
+				<button onClick={() => setCurrentView("Overview")}>
 					<X />
 				</button>
 			</section>
@@ -49,17 +35,7 @@ const UserWalletsSection = (props: Props) => {
 				</span>
 			</section>
 
-			<section className={Styles.ContainerWalletsList}>
-				<div className={Styles.ContainerHead}>
-					<span>YOUR WALLETS</span>
-					<button onClick={toggleView}>
-						<Plus />
-					</button>
-				</div>
-			</section>
-
-			<WalletsList />
-			<WalletsList />
+			<ContainerWalletsList />
 		</article>
 	);
 };

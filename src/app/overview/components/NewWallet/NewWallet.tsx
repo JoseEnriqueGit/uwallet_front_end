@@ -8,14 +8,10 @@ import { useAuth } from "@clerk/nextjs";
 
 const NewWallet: React.FC = (): JSX.Element => {
 	const { userId } = useAuth();
-	const { currentView, setCurrentView } = useContext(ViewContext);
+	const { setCurrentView } = useContext(ViewContext);
 	const [amount, setAmount] = useState("");
 	const [currency, setCurrency] = useState({ value: "", label: "" });
 	const [isSend, setIsSend] = useState(false);
-
-	const toggleView = () => {
-		setCurrentView(currentView === "UserWallets" ? "NewWallet" : "UserWallets");
-	};
 
 	const handleAmountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setAmount(event.target.value);
@@ -33,7 +29,6 @@ const NewWallet: React.FC = (): JSX.Element => {
 				});
 				setAmount("");
 				setCurrency({ value: "", label: "" });
-				toggleView();
 			}
 		} catch (error: any) {
 			console.error(error);
@@ -44,7 +39,10 @@ const NewWallet: React.FC = (): JSX.Element => {
 		<section className={Styles.NewWalletContainer}>
 			<div className={Styles.ContainerHead}>
 				<span>NEW WALLET</span>
-				<button onClick={toggleView} className={Styles.CloseBtn}>
+				<button
+					onClick={() => setCurrentView("UserWallets")}
+					className={Styles.CloseBtn}
+				>
 					<X />
 				</button>
 			</div>
