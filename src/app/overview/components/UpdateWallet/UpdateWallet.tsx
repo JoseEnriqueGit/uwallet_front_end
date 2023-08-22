@@ -4,6 +4,7 @@ import { useAuth } from "@clerk/nextjs";
 import { useQueryClient } from "react-query";
 import { SquareRoundedPlus, Minus, Plus, NumberInput } from "@/src/components";
 import Styles from "./UpdateWallet.module.scss";
+
 interface IWarningMessages {
 	amountRequired: string;
 	insufficientFunds: string;

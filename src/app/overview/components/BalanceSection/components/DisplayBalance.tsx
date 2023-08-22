@@ -1,12 +1,12 @@
 // Styles
 import Styles from "./DisplayBalance.module.scss";
 
-import { ArrowExchange } from "@/src/Components";
+import { ArrowExchange } from "@/src/components";
 import { useAuth } from "@clerk/nextjs";
 import axios from "axios";
 import { useEffect } from "react";
 import { useQueryClient } from "react-query";
-import { useBalance } from "../../../../api/getUserBalance";
+import { useBalance } from "../../../../../api/getUserBalance";
 
 interface BanlaceProps {
 	balance: number;

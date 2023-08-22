@@ -3,7 +3,7 @@ import "../../styles/globals.scss";
 import { Inter } from "next/font/google";
 
 import { ClerkProvider } from "@clerk/nextjs";
-import { ViewProvider } from "../useContext/ViewContext";
+import { ViewProvider } from "../context/ViewContext";
 
 import Providers from "../utils/provider";
 

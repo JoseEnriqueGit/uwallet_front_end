@@ -1,10 +1,10 @@
 // Styles
 import Styles from "./WalletsList.module.scss";
 // Components
-import { SquareRounded, SquareRoundedMinus } from "@/src/Components";
+import { SquareRounded, SquareRoundedMinus } from "@/src/components";
 import { useState } from "react";
 
-const WalletsList = () => {
+const WalletsList: React.FC = (): JSX.Element => {
 	const [isClicked, setIsClicked] = useState(false);
 
 	const handleClick = () => {

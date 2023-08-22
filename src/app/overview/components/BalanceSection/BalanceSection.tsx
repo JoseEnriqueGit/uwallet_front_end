@@ -1,12 +1,10 @@
 import Styles from "./BalanceSection.module.scss";
 import React, { useContext } from "react";
-import {
-	SettingDolar,
-	Wallet,
-	UserWalletsSection,
-	DisplayBalance,
-} from "@/src/Components";
-import { ViewContext } from "@/src/useContext/ViewContext";
+
+import { SettingDolar, Wallet } from "@/src/components";
+import UserWalletsSection  from "../UserWalletsSection/UserWalletsSection";
+import { DisplayBalance } from "./components";
+import { ViewContext } from "@/src/context/ViewContext";
 
 interface GeneralViewProps {
 	toggleView: () => void;

@@ -1,5 +1,3 @@
-export { default as BalanceSection } from './BalanceSection/BalanceSection';
-export { default as DisplayBalance } from './BalanceSection/components/DisplayBalance/DisplayBalance';
 export { default as Input } from './Form/Input/Input';
 export { default as NumberInput } from './Form/NumberInput/NumberInput';
 export { default as CustomStyles } from './Form/Select/CustomStyles';
@@ -15,7 +13,3 @@ export { default as SquareRoundedPlus } from './Icons/SquareRoundedPlus';
 export * from './Icons/Types/IconPropsTypes';
 export { default as Wallet } from './Icons/Wallet';
 export { default as X } from './Icons/X';
-export { default as NewWallet } from './NewWallet/NewWallet';
-export { default as UpdateWallet } from './UpdateWallet/UpdateWallet';
-export { default as UserWalletsSection } from './UserWalletsSection/UserWalletsSection';
-export { default as WalletsList } from './UserWalletsSection/components/WalletsList/WalletsList';
