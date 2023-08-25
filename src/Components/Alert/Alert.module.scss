@@ -1,0 +1,11 @@
+// Utils
+@use "utils/variables" as *;
+@use "utils/mixins" as *;
+
+.Warning {
+	@include TextStyles(
+		$FontSize: small,
+		$FontColor: $RedF,
+		$FontWeight: $SemiBold
+	);
+}
