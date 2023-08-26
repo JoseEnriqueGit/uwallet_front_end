@@ -1,2 +1,2 @@
 export * from './getBalance';
-export * from './updateBalance';
+export { default as usePostUserHistory } from './usePostUserHistory';

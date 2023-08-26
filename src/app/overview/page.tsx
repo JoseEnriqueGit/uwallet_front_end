@@ -19,29 +19,31 @@ enum CurrentView {
 	NewWallet = "NewWallet",
 }
 
+const renderCurrentView = new Map();
+renderCurrentView.set(
+	CurrentView.Overview,
+	<>
+		<BalanceSection />
+		<UpdateWallet />
+	</>
+);
+renderCurrentView.set(CurrentView.UserWallets, <UserWalletsSection />);
+renderCurrentView.set(CurrentView.NewWallet, <NewWallet />);
+
 const OverviewPage: React.FC = (): JSX.Element => {
 	const { currentView } = useContext(ViewContext);
 
-	if (currentView === CurrentView.UserWallets) {
-		return (
-			<article className={Styles.ArticContainer}>
-				<UserWalletsSection />
-			</article>
+	const multiConditionalInit = (itemToGet: string) => {
+		return renderCurrentView.has(itemToGet) ? (
+			renderCurrentView.get(itemToGet)
+		) : (
+			<div>Something went wrong...</div>
 		);
-	}
-
-	if (currentView === CurrentView.NewWallet) {
-		return (
-			<article className={Styles.ArticContainer}>
-				<NewWallet />
-			</article>
-		);
-	}
+	};
 
 	return (
 		<article className={Styles.ArticContainer}>
-			<BalanceSection />
-			<UpdateWallet />
+			{multiConditionalInit(currentView)}
 		</article>
 	);
 };

@@ -67,9 +67,4 @@
 			);
 		}
 	}
-
-	// Warnings Text
-	.Warning {
-		@include TextStyles($FontSize: small, $FontColor: $RedF, $FontWeight: $SemiBold);
-	}
 }

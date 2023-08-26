@@ -3,7 +3,7 @@ import "../../styles/globals.scss";
 import { Inter } from "next/font/google";
 
 import { ClerkProvider } from "@clerk/nextjs";
-import { ViewProvider } from "../context/ViewContext";
+import { ViewProvider, TimeOutProvider } from "../context";
 
 import Providers from "../utils/provider";
 
@@ -22,6 +22,7 @@ export default function RootLayout({
 	return (
 		<ClerkProvider>
 			<ViewProvider>
+				<TimeOutProvider>
 				<html lang="en">
 					<body className={inter.className}>
 						<main>
@@ -29,6 +30,7 @@ export default function RootLayout({
 						</main>
 					</body>
 				</html>
+				</TimeOutProvider>
 			</ViewProvider>
 		</ClerkProvider>
 	);

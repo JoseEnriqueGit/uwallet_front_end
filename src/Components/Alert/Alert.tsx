@@ -1,6 +1,7 @@
 import Styles from "./Alert.module.scss";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useContext } from "react";
+import { AlertTimeOutContext } from "@/src/context";
 
 interface IAlertProps {
 	message: string;
@@ -17,7 +18,7 @@ renderAlert.set(AlertType.NotAmountInserted, "Please enter a value.");
 renderAlert.set(AlertType.InsufficientFunds, "Insufficient funds.");
 
 const Alert = ({ message }: IAlertProps): JSX.Element => {
-	const [timeOut, setTimeOut] = useState(false);
+	const { timeOut, setTimeOut } = useContext(AlertTimeOutContext);
 
 	useEffect(() => {
 		const timer = setTimeout(() => {
